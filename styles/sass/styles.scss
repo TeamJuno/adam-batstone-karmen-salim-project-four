@@ -16,6 +16,10 @@ body {
   max-width: 1280px;
   margin: 0 auto;
 }
+a {
+  padding: 5px;
+  text-decoration: none;
+}
 /* ========================== */
 
 
@@ -33,7 +37,6 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
 
 .navigation-list {
   display: flex;
@@ -98,4 +101,27 @@ header {
 
 .main-content {
   margin-bottom: 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 180px;
+}
+
+.footer-navigation-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-navigation-list li {
+  margin: 5px;
+}
+
+
+.footer-copyright {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
