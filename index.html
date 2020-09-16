@@ -48,27 +48,36 @@
 
     <section class="main">
       <div class="wrapper">
+        <div class="main-title">
+          <h2>Cocktail Recipes</h2>
+        </div>
         <div class="main-container">
-          <div class="main-content">
-            <h2>Cocktail Recipes</h2>
-            <p>Instruction how to use the search</p>
-            <div class="main-content-img">
-              <!-- Add descipriton in the alt -->
-              <img src="https://source.unsplash.com/400x500" alt="">
+          <div class="main-img">
+            <!-- Add descipriton in the alt -->
+            <img src="https://source.unsplash.com/200x300" alt="">
+          </div>
+          <div class="main-search">
+            <div class="main-content">
+              <p>Instruction how to use the search</p>
+              <ul>
+                <li>enter search</li>
+                <li>enter search</li>
+                <li>enter search</li>
+                <li>enter search</li>
+              </ul>
             </div>
-            <!-- Main Content Div ENDS -->
+
+            <form action="submit">
+              <label for="" class="sr-only">Ingredient</label>
+              <input type="text" placeholder="Enter an ingredient">
+              <button type="submit" class="btn">Search</button>
+            </form>
+            <!-- Main Search Div ENDS -->
           </div>
           <!-- Main Container ENDS  -->
         </div>
 
-        <div class="main-search">
-          <form action="submit">
-            <label for="" class="sr-only">Ingredient</label>
-            <input type="text" placeholder="Enter an ingredient">
-            <button type="submit" class="btn">Search</button>
-          </form>
-          <!-- Main Search Div ENDS -->
-        </div>
+
 
         <div class="recipe-container">
           <!-- Dynamically add items here -->

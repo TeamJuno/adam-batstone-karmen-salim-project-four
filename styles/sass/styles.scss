@@ -54,6 +54,7 @@ header {
 }
 
 /* About */
+
 .about {
   height: 500px;
   display: flex;
@@ -69,4 +70,32 @@ header {
 
 .about-content p {
   width: 600px;
+}
+
+/* Main */
+
+.main {
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.main-title {
+  display: flex;
+  justify-content: center;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-img, 
+.main-search {
+  padding: 10px;
+}
+
+.main-content {
+  margin-bottom: 20px;
 }
