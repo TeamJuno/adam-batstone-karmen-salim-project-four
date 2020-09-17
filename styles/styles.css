@@ -577,6 +577,12 @@ header {
   margin-bottom: 20px;
 }
 
+/* Form */
+.invalid-input {
+  border: 1px solid red;
+}
+
+/* Footer */
 footer {
   height: 180px;
 }

@@ -41,15 +41,16 @@ cocktailApp.getRecipes = function (ingredient) {
         const randomRecipes = Math.floor(Math.random() * res.drinks.length)
 
         recipesToDisplay.push(res.drinks[randomRecipes])
-        // console.log('recipesToDisplay', recipesToDisplay)
+
       }
 
+      console.log('recipesToDisplay', recipesToDisplay)
       // TODO figure out how to refactor this. Possibly call the function outside. Need access to recipesToDisplay
       cocktailApp.displayRecipes(recipesToDisplay)
     })
-    .fail((err) => {
-      console.log(err)
-    })
+    // .fail(() => {
+    //   $('input').attr('placeholder', "Sorry! Please try another ingredient.")
+    // })
 }
 
 
@@ -63,12 +64,27 @@ cocktailApp.onSubmit = function () {
     console.log('Form submit is working..')
     console.log('event target:', e.target)
 
+
+    $('input').toggleClass('invalid-input')
+
     // Store user input in a variable
     const $userInput = $('input').val().trim()
-    console.log('$userInput:', $userInput)
 
-    // Call the API to return recipes to the user
-    cocktailApp.getRecipes($userInput)
+
+    if ($userInput !== '') {
+
+      // Call the API to return recipes to the user
+      cocktailApp.getRecipes($userInput)
+    } else {
+      $('input')
+        .attr('placeholder', "Please enter a valid input")
+        .hasClass('invalid-input')
+    }
+
+    // Clear user input
+    $('input').val('')
+
+
 
   })
 }
@@ -91,12 +107,11 @@ cocktailApp.displayRecipes = (recipes) => {
   $('.recipe-container').append($recipeList)
 }
 
-cocktailApp.displayRecipes()
+
 
 
 // Code to kick off the app
 cocktailApp.init = function () {
-  cocktailApp.getRecipes()
   cocktailApp.onSubmit()
 }
 
