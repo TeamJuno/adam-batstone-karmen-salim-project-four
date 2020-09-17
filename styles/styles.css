@@ -462,7 +462,7 @@ header {
   height: 100vh;
   background-image: url("https://source.unsplash.com/2000x900");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: cover;
 }
 
 .header-content {
