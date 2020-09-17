@@ -538,7 +538,7 @@ header {
 
 /* Main */
 .main {
-  height: 500px;
+  min-height: calc(100vh - 180px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -577,6 +577,10 @@ header {
   margin-bottom: 20px;
 }
 
+footer {
+  height: 180px;
+}
+
 .footer-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -586,7 +590,6 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 180px;
 }
 
 .footer-navigation-list {
@@ -611,8 +614,10 @@ header {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 10px;
+  margin-top: 40px;
 }
 
 .recipe-container {
-  height: 500px;
+  height: 100%;
+  padding: 100px 0px;
 }

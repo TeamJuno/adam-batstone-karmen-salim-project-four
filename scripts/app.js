@@ -3,8 +3,8 @@
 //     - save user input into variable - DONE
 //       - use the variable as the query value - DONE
 //         - return all results that match the user input - DONE
-//           - (displayItems()) use forEach loop on the results object to create an < li > for each and append to the < ul > on the DOM.Each < li > will be linked by the 'idDrink' from the results object.
-// - Within each < li > a title and picture will display for the drink.The user can click on the title to access the recipe, which will result in another API call using the 'idDrink'.This will be displayed in a < div > next to the drink image.
+//           - (displayItems()) use forEach loop on the results object to create an < li > for each and append to the < ul > on the DOM.Each < li > will be linked by the 'idDrink' from the results object. - DONE
+// - Within each < li > a title and picture will display for the drink.The user can click on the title to access the recipe, which will result in another API call using the 'idDrink'.This will be displayed in a < div > next to the drink image. - DONE
 // - Append / Prepend the recipe details to the ul
 //   - If the user clicks on other recipes from the ul, clear the recipe details above and replace them with the new recipe details.
 
@@ -79,7 +79,7 @@ cocktailApp.displayRecipes = (recipes) => {
   const $recipeList = $('<ul>')
 
   // Creating an li element for each recipe element in the array
-  // TODO Possibly refactor !!! 
+  // TODO Possibly refactor !!!
   $.each(recipes, (index, recipe) => {
     // Appending each li to the ul
     $recipeList.append(`<li>
