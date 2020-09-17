@@ -24,30 +24,32 @@ const cocktailApp = {}
 
 
 // API Call
-cocktailApp.getRecipes = function(ingredient) {
+cocktailApp.getRecipes = function (ingredient) {
   return $.ajax({
     url: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`,
     method: 'GET',
     dataType: 'JSON',
   })
-  .then((res)=>{
-    // define empty arr to push a limited number of recipes to
-    const recipesToDisplay = []
+    .then((res) => {
+      // define empty arr to push a limited number of recipes to
+      const recipesToDisplay = []
 
-    // pick random 20 recipes to push back to recipesToDisplay
-    for(let i = 0; i<= 20; i++) {
+      // pick random 20 recipes to push back to recipesToDisplay
+      for (let i = 0; i <= 20; i++) {
 
-      // Get random recipes from the results object
-      const randomRecipes = Math.floor(Math.random() * res.drinks.length)
-      console.log('randomRecipes:', randomRecipes)
+        // Get random recipes from the results object
+        const randomRecipes = Math.floor(Math.random() * res.drinks.length)
 
-      recipesToDisplay.push(res.drinks[randomRecipes])
-      console.log('recipesToDisplay',recipesToDisplay)
-    }
-  })
-  .fail((err) => {
-    console.log(err)
-  })
+        recipesToDisplay.push(res.drinks[randomRecipes])
+        // console.log('recipesToDisplay', recipesToDisplay)
+      }
+
+      // TODO figure out how to refactor this. Possibly call the function outside. Need access to recipesToDisplay
+      cocktailApp.displayRecipes(recipesToDisplay)
+    })
+    .fail((err) => {
+      console.log(err)
+    })
 }
 
 
@@ -71,6 +73,26 @@ cocktailApp.onSubmit = function () {
   })
 }
 
+// Function for displaying recipes on the DOM
+cocktailApp.displayRecipes = (recipes) => {
+  // Creating the UL element
+  const $recipeList = $('<ul>')
+
+  // Creating an li element for each recipe element in the array
+  // TODO Possibly refactor !!! 
+  $.each(recipes, (index, recipe) => {
+    // Appending each li to the ul
+    $recipeList.append(`<li>
+    <h3>${recipe.strDrink}</h3>
+    <img src=${recipe.strDrinkThumb}>
+  </li>`)
+  });
+
+  $('.recipe-container').append($recipeList)
+}
+
+cocktailApp.displayRecipes()
+
 
 // Code to kick off the app
 cocktailApp.init = function () {
@@ -80,6 +102,6 @@ cocktailApp.init = function () {
 
 
 // Everything that needs to run on page load
-$(function(){
+$(function () {
   cocktailApp.init()
 })
