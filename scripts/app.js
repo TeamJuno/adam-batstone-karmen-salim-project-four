@@ -31,6 +31,7 @@ cocktailApp.getRecipes = function (ingredient) {
     dataType: 'JSON',
   })
     .then((res) => {
+
       // define empty arr to push a limited number of recipes to
       const recipesToDisplay = []
 
@@ -48,9 +49,10 @@ cocktailApp.getRecipes = function (ingredient) {
       // TODO figure out how to refactor this. Possibly call the function outside. Need access to recipesToDisplay
       cocktailApp.displayRecipes(recipesToDisplay)
     })
-    // .fail(() => {
-    //   $('input').attr('placeholder', "Sorry! Please try another ingredient.")
-    // })
+    .fail(() => {
+
+      $('.recipe-container').html('<p class="error-text">No Results found</p>')
+    })
 }
 
 
@@ -60,11 +62,18 @@ cocktailApp.getRecipes = function (ingredient) {
 */
 cocktailApp.onSubmit = function () {
   $('form').on('submit', (e) => {
+    // Clearing the recipe-container div
+    $('.recipe-container').html('')
+    // Setting the placeholder on the search form
+    $('input')
+      .attr('placeholder', "Enter an ingredient")
+
+
     e.preventDefault()
     console.log('Form submit is working..')
     console.log('event target:', e.target)
 
-
+    // .toggleClass('invalid-input')
     $('input').toggleClass('invalid-input')
 
     // Store user input in a variable
@@ -83,8 +92,6 @@ cocktailApp.onSubmit = function () {
 
     // Clear user input
     $('input').val('')
-
-
 
   })
 }
@@ -113,6 +120,7 @@ cocktailApp.displayRecipes = (recipes) => {
 // Code to kick off the app
 cocktailApp.init = function () {
   cocktailApp.onSubmit()
+
 }
 
 
