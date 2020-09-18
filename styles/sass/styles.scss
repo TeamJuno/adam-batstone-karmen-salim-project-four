@@ -13,7 +13,7 @@ html {
 body {
   font-size: 2rem;
   color: $primary-text-color;
-  @include primary-font(2.4rem, 2.2)
+  @include primary-font(2.2rem, 2.2, 0.12rem)
 }
 
 .wrapper {
@@ -37,11 +37,11 @@ h1 {
 }
 
 h2 {
-  @include secondary-font(3rem, 2.2, 500, 0.5rem);
+  @include secondary-font(3rem, 2.2, 0.5rem, 500);
 }
 
 h3 {
-  @include secondary-font(4rem, 2.2, 500, 0.5rem);
+  @include secondary-font(4rem, 2.2, 0.5rem, 500);
   color: $primary-color;
 }
 /* ========================== */
@@ -64,25 +64,25 @@ header {
 .header-nav-list {
   display: flex;
   justify-content: space-between;
-  width: 400px;
-}
+  width: 500px;
 
-.header-nav-list a {
-  color: $primary-color;
+  a {
+    color: $primary-color;
+  }
 }
 
 .header-description {
   width: 100%;
-  height: 600px;
+  height: 400px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  p {
+    width: 600px;
+  }
 }
 
-.header-description p {
-  width: 600px;
-}
 
 
 /* About */
@@ -99,10 +99,10 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
 
-.about-content p {
-  width: 600px;
+  p {
+    width: 600px;
+  }
 }
 
 
@@ -148,6 +148,44 @@ header {
   border: 1px solid red;
 }
 
+input {
+  @include primary-font(2rem, 1.6, 0.1rem);
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-bottom: 1px solid $secondary-warning-color;
+  color: $primary-text-color!important;
+  background: transparent;
+}
+
+input:focus {
+  outline: 0.1px dotted $primary-color;
+}
+
+input:active {
+  background-color: $warning-color;
+  opacity: 0.4;
+}
+
+
+/* Buttons */
+// XXX TODO - align btn and input horizontally
+.btn {
+  @include primary-font(2rem, 1.6, 0.1rem);
+  color: $primary-text-color;
+  background-color: $primary-color;
+  border: 1px solid $warning-color;
+  margin-left: 5px;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
 
 /* Footer */
 footer {
@@ -165,14 +203,16 @@ footer {
 .footer-nav-list {
   display: flex;
   flex-direction: column;
+
+  li {
+    margin: 5px;
+  }
 }
 
-.footer-nav-list li {
-  margin: 5px;
-}
 
 .footer-nav-list a {
   color: $primary-color;
+  font-size: 2rem;
 }
 
 .footer-copyright {
@@ -183,7 +223,7 @@ footer {
 
   span,
   a {
-    color: $warning-color-2;
+    color: $secondary-warning-color;
     font-size: 1.8rem;
   }
 }

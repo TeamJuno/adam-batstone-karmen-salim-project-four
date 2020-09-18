@@ -10,22 +10,22 @@
 @mixin primary-font(
   $font-size,
   $line-height,
+  $letter-spacing: normal,
   $font-weight: 400,
-  $letter-spacing: normal
   )
   {
   font-family: 'Raleway', 'Times', 'Arial', sans-serif;
   font-size: $font-size;
-  letter-spacing: $letter-spacing;
   line-height: $line-height;
+  letter-spacing: $letter-spacing;
   font-weight: $font-weight;
 }
 
 @mixin secondary-font(
   $font-size,
   $line-height,
+  $letter-spacing: normal,
   $font-weight: 400,
-  $letter-spacing: normal
 )
 {
   font-family: 'Ovo', 'Times', 'Arial', serif;

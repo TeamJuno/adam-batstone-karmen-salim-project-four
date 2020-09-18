@@ -451,9 +451,9 @@ body {
   font-size: 2rem;
   color: #FAFAFA;
   font-family: 'Raleway', 'Times', 'Arial', sans-serif;
-  font-size: 2.4rem;
-  letter-spacing: normal;
+  font-size: 2.2rem;
   line-height: 2.2;
+  letter-spacing: 0.12rem;
   font-weight: 400;
 }
 
@@ -475,9 +475,9 @@ a {
 h1 {
   font-family: 'Ovo', 'Times', 'Arial', serif;
   font-size: 5rem;
-  letter-spacing: 1rem;
+  letter-spacing: 600;
   line-height: 2.8;
-  font-weight: 600;
+  font-weight: 1rem;
   color: #EFAC27;
 }
 
@@ -526,7 +526,7 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 400px;
+  width: 500px;
 }
 
 .header-nav-list a {
@@ -535,14 +535,10 @@ header {
 
 .header-description {
   width: 100%;
-  height: 600px;
+  height: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -640,6 +636,50 @@ header {
   border: 1px solid red;
 }
 
+input {
+  font-family: 'Raleway', 'Times', 'Arial', sans-serif;
+  font-size: 2rem;
+  line-height: 1.6;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-bottom: 1px solid #B56629;
+  color: #FAFAFA !important;
+  background: transparent;
+}
+
+input:focus {
+  outline: 0.1px dotted #EFAC27;
+}
+
+input:active {
+  background-color: #CEA533;
+  opacity: 0.4;
+}
+
+/* Buttons */
+.btn {
+  font-family: 'Raleway', 'Times', 'Arial', sans-serif;
+  font-size: 2rem;
+  line-height: 1.6;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+  color: #FAFAFA;
+  background-color: #EFAC27;
+  border: 1px solid #CEA533;
+  margin-left: 5px;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
 /* Footer */
 footer {
   height: 100%;
@@ -674,6 +714,7 @@ footer {
 
 .footer-nav-list a {
   color: #EFAC27;
+  font-size: 2rem;
 }
 
 .footer-copyright {
