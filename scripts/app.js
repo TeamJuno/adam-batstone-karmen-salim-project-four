@@ -70,8 +70,6 @@ cocktailApp.onSubmit = function () {
     $('input')
       .attr('placeholder', "Enter an ingredient")
 
-    // .toggleClass('invalid-input')
-    // $('input').toggleClass('invalid-input')
 
     // Store user input in a variable
     const $userInput = $('input').val().trim()
@@ -93,29 +91,30 @@ cocktailApp.onSubmit = function () {
   })
 }
 
-// Function for displaying recipes on the DOM
+// Function for displaying drinks on the DOM
 cocktailApp.displayDrinks = (recipes) => {
   // Creating the UL element
-  const $recipeList = $('<ul>')
+  const $drinksList = $('<ul>')
 
   // Creating an li element for each recipe element in the array
   // TODO Possibly refactor !!!
   $.each(recipes, (index, recipe) => {
     // Appending each li to the ul
-    $recipeList.append(`<li>
+    $drinksList.append(`<li>
     <h3>${recipe.strDrink}</h3>
     <img src=${recipe.strDrinkThumb} class="drinkImg">
   </li>`)
   });
 
-  $('.recipe-container').append($recipeList)
+  $('.recipe-container').append($drinksList)
 
   cocktailApp.configureClickBehaviourOnRecipies(recipes)
 }
 
+
 cocktailApp.configureClickBehaviourOnRecipies = (recipes) => {
 
-  // Getting the users click on recipie 
+  // Getting the users click on recipie
   $('li').on('click', (e) => {
 
     // Variable for storing the click
@@ -140,23 +139,66 @@ cocktailApp.configureClickBehaviourOnRecipies = (recipes) => {
 };
 
 cocktailApp.getRecipe = (drink) => {
-  console.log(drink)
   return $.ajax({
     url: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}`,
     method: 'GET',
     dataType: 'JSON',
   })
     .then((res) => {
-      console.log(res)
+
+      // Getting all necessary data from the recipe to use in displayRecipes function
+      const cocktailRecipeArr = res.drinks
+      const cocktailRecipeObj = cocktailRecipeArr[0]
+
+      const recipeName = drink
+      const ingredients = []
+      const ingredientsUnits = []
+      const recipeInstructions = cocktailRecipeObj.strInstructions
+      const recipeImage = cocktailRecipeObj.strDrinkThumb
+      const servingGlass = cocktailRecipeObj.strGlass
+
+
+      // Getting the ingredients and  measurement units for the recipe and storing them in arrays
+      for (const property in cocktailRecipeObj){
+        if (property.includes('strIngredient') && cocktailRecipeObj[property] !== null && cocktailRecipeObj[property] !== "") {
+          ingredients.push(cocktailRecipeObj[property])
+        }
+        if (property.includes('strMeasure') && cocktailRecipeObj[property] !== null && cocktailRecipeObj[property] !== "") {
+          ingredientsUnits.push(cocktailRecipeObj[property])
+        }
+
+
+
+      // cocktailApp.displayRecipes(res)
+      }
 
     })
     .fail((err) => {
       console.log(err)
     })
+
 };
 
 
+// // Function for displaying recipes on the DOM
+// cocktailApp.displayRecipes = (recipe) => {
+//   // Creating the UL element
+//   const $recipeList = $('<ul>')
 
+//   // Creating an li element for each recipe element in the array
+//   // TODO Possibly refactor !!!
+//   $.each(recipe, (index, ingredient) => {
+//     // Appending each li to the ul
+//     $recipeList.append(`<li>
+//     <h3>${recipe.strDrink}</h3>
+//     <img src=${recipe.strDrinkThumb} class="drinkImg">
+//   </li>`)
+//   });
+
+//   $('.recipe-container').append($recipeList)
+
+//   cocktailApp.configureClickBehaviourOnRecipies(recipes)
+// }
 
 
 
