@@ -6,26 +6,29 @@
 
 /* MIXINS
 ========================== */
-@mixin secondary-font(
-  $font-size,
-  $line-height,
-  $font-weight: 400,
-  $letter-spacing: normal
-) {
-  font-family: 'Ovo', 'Times', 'Arial', serif;
-  font-size: $font-size;
-  letter-spacing: $letter-spacing;
-  line-height: $line-height;
-  font-weight: $font-weight;
-}
 
 @mixin primary-font(
   $font-size,
   $line-height,
   $font-weight: 400,
   $letter-spacing: normal
-) {
+  )
+  {
   font-family: 'Raleway', 'Times', 'Arial', sans-serif;
+  font-size: $font-size;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+  font-weight: $font-weight;
+}
+
+@mixin secondary-font(
+  $font-size,
+  $line-height,
+  $font-weight: 400,
+  $letter-spacing: normal
+)
+{
+  font-family: 'Ovo', 'Times', 'Arial', serif;
   font-size: $font-size;
   letter-spacing: $letter-spacing;
   line-height: $line-height;
