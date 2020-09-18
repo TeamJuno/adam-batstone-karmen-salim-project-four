@@ -146,31 +146,32 @@ cocktailApp.getRecipe = (drink) => {
   })
     .then((res) => {
 
+
       // Getting all necessary data from the recipe to use in displayRecipes function
       const cocktailRecipeArr = res.drinks
       const cocktailRecipeObj = cocktailRecipeArr[0]
 
-      const recipeName = drink
-      const ingredients = []
-      const ingredientsUnits = []
-      const recipeInstructions = cocktailRecipeObj.strInstructions
-      const recipeImage = cocktailRecipeObj.strDrinkThumb
-      const servingGlass = cocktailRecipeObj.strGlass
+      const recipeInfoObj = {
+        recipeName: drink,
+        ingredients: [],
+        ingredientsUnits: [],
+        recipeInstructions: cocktailRecipeObj.strInstructions,
+        recipeImage: cocktailRecipeObj.strDrinkThumb,
+        servingGlass: cocktailRecipeObj.strGlass
+      }
 
 
       // Getting the ingredients and  measurement units for the recipe and storing them in arrays
       for (const property in cocktailRecipeObj){
         if (property.includes('strIngredient') && cocktailRecipeObj[property] !== null && cocktailRecipeObj[property] !== "") {
-          ingredients.push(cocktailRecipeObj[property])
+          recipeInfoObj.ingredients.push(cocktailRecipeObj[property])
         }
         if (property.includes('strMeasure') && cocktailRecipeObj[property] !== null && cocktailRecipeObj[property] !== "") {
-          ingredientsUnits.push(cocktailRecipeObj[property])
+          recipeInfoObj.ingredientsUnits.push(cocktailRecipeObj[property])
         }
-
-
-
-      // cocktailApp.displayRecipes(res)
       }
+      // cocktailApp.displayRecipes(res)
+
 
     })
     .fail((err) => {
