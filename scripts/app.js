@@ -33,7 +33,7 @@ cocktailApp.getRecipes = function (ingredient) {
     .then((res) => {
 
       // define empty arr to push a limited number of recipes to
-      const recipesToDisplay = []
+      const drinksToDisplay = []
 
       // pick random 20 recipes to push back to recipesToDisplay
       for (let i = 0; i <= 20; i++) {
@@ -41,17 +41,17 @@ cocktailApp.getRecipes = function (ingredient) {
         // Get random recipes from the results object
         const randomRecipes = Math.floor(Math.random() * res.drinks.length)
 
-        recipesToDisplay.push(res.drinks[randomRecipes])
+        drinksToDisplay.push(res.drinks[randomRecipes])
 
       }
 
-      console.log('recipesToDisplay', recipesToDisplay)
       // TODO figure out how to refactor this. Possibly call the function outside. Need access to recipesToDisplay
-      cocktailApp.displayRecipes(recipesToDisplay)
+      cocktailApp.displayDrinks(drinksToDisplay)
     })
     .fail(() => {
 
       $('.recipe-container').html('<p class="error-text">No Results found</p>')
+      $('input').trigger('focus').addClass('invalid-input')
     })
 }
 
@@ -62,32 +62,29 @@ cocktailApp.getRecipes = function (ingredient) {
 */
 cocktailApp.onSubmit = function () {
   $('form').on('submit', (e) => {
+    e.preventDefault()
+
     // Clearing the recipe-container div
     $('.recipe-container').html('')
     // Setting the placeholder on the search form
     $('input')
       .attr('placeholder', "Enter an ingredient")
 
-
-    e.preventDefault()
-    console.log('Form submit is working..')
-    console.log('event target:', e.target)
-
     // .toggleClass('invalid-input')
-    $('input').toggleClass('invalid-input')
+    // $('input').toggleClass('invalid-input')
 
     // Store user input in a variable
     const $userInput = $('input').val().trim()
 
 
     if ($userInput !== '') {
-
+      $('input').removeClass('invalid-input')
       // Call the API to return recipes to the user
       cocktailApp.getRecipes($userInput)
     } else {
       $('input')
         .attr('placeholder', "Please enter a valid input")
-        .hasClass('invalid-input')
+        .addClass('invalid-input')
     }
 
     // Clear user input
@@ -97,7 +94,7 @@ cocktailApp.onSubmit = function () {
 }
 
 // Function for displaying recipes on the DOM
-cocktailApp.displayRecipes = (recipes) => {
+cocktailApp.displayDrinks = (recipes) => {
   // Creating the UL element
   const $recipeList = $('<ul>')
 
@@ -107,15 +104,12 @@ cocktailApp.displayRecipes = (recipes) => {
     // Appending each li to the ul
     $recipeList.append(`<li>
     <h3>${recipe.strDrink}</h3>
-    <img src=${recipe.strDrinkThumb}>
+    <img src=${recipe.strDrinkThumb} class="drinkImg">
   </li>`)
   });
 
   $('.recipe-container').append($recipeList)
 }
-
-
-
 
 // Code to kick off the app
 cocktailApp.init = function () {

@@ -739,3 +739,8 @@ footer {
   height: 100%;
   padding: 100px 0px;
 }
+
+.drinkImg {
+  height: 200px;
+  width: 200px;
+}
