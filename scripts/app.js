@@ -109,7 +109,57 @@ cocktailApp.displayDrinks = (recipes) => {
   });
 
   $('.recipe-container').append($recipeList)
+
+  cocktailApp.configureClickBehaviourOnRecipies(recipes)
 }
+
+cocktailApp.configureClickBehaviourOnRecipies = (recipes) => {
+
+  // Getting the users click on recipie 
+  $('li').on('click', (e) => {
+
+    // Variable for storing the click
+    let $drinkTitile
+
+    // Checking if the click is on the h3 or the img
+    if ($(e.target).is('h3')) {
+      $drinkTitle = $(e.target).text()
+    } else if ($(e.target).is('img')) {
+      $drinkTitle = $(e.target).prev().text()
+    }
+
+    // Finding the index number of selected drink
+    const selection = recipes.findIndex((drink) => {
+      return $drinkTitle === drink.strDrink
+    });
+
+    // Using the original recipe array to find the index of the selected drink
+    const $drinkSelected = recipes[selection].strDrink
+    cocktailApp.getRecipe($drinkSelected)
+  })
+};
+
+cocktailApp.getRecipe = (drink) => {
+  console.log(drink)
+  return $.ajax({
+    url: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}`,
+    method: 'GET',
+    dataType: 'JSON',
+  })
+    .then((res) => {
+      console.log(res)
+
+    })
+    .fail((err) => {
+      console.log(err)
+    })
+};
+
+
+
+
+
+
 
 // Code to kick off the app
 cocktailApp.init = function () {
