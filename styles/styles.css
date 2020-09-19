@@ -745,6 +745,10 @@ footer {
   width: 200px;
 }
 
-.modal {
-  height: 200px;
+.outer-modal {
+  background: #17b61f;
+}
+
+.modal-content {
+  background: #ec4e4e;
 }

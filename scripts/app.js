@@ -5,7 +5,7 @@
 //         - return all results that match the user input - DONE
 //           - (displayItems()) use forEach loop on the results object to create an < li > for each and append to the < ul > on the DOM.Each < li > will be linked by the 'idDrink' from the results object. - DONE
 // - Within each < li > a title and picture will display for the drink.The user can click on the title to access the recipe, which will result in another API call using the 'idDrink'.This will be displayed in a < div > next to the drink image. - DONE
-// - Append / Prepend the recipe details to the ul
+// - Append / Prepend the recipe details to the ul - DONE
 //   - If the user clicks on other recipes from the ul, clear the recipe details above and replace them with the new recipe details.
 
 
@@ -16,12 +16,11 @@
 //   - Once the recipe is displayed, the user can click an icon to save the recipe as a favorite.This will be added to an array that will be pushed to(localStorage).When the user refreshes the page, we will check localStorage for any saved data, parse it, and update the array with the saved drinks.
 // - The saved recipes are then accessed by the nav link.
 
-
+// TODO - FIX centering of modal window on resize
+// TODO - make sure the drinksToDisplay arr only contains one of each drink type
 
 // App Object
 const cocktailApp = {}
-
-
 
 // API Call
 cocktailApp.getRecipes = function (ingredient) {
@@ -36,13 +35,12 @@ cocktailApp.getRecipes = function (ingredient) {
       const drinksToDisplay = []
 
       // pick random 20 recipes to push back to recipesToDisplay
-      for (let i = 0; i <= 20; i++) {
+      for (let i = 0; i <= 30; i++) {
 
         // Get random recipes from the results object
         const randomRecipes = Math.floor(Math.random() * res.drinks.length)
 
         drinksToDisplay.push(res.drinks[randomRecipes])
-
       }
 
       // TODO figure out how to refactor this. Possibly call the function outside. Need access to recipesToDisplay
@@ -101,7 +99,7 @@ cocktailApp.displayDrinks = (recipes) => {
     <h3>${recipe.strDrink}</h3>
     <img src=${recipe.strDrinkThumb} class="drinkImg">
   </li>`)
-  });
+  })
 
   $('.recipe-container').append($drinksList)
 
@@ -120,20 +118,22 @@ cocktailApp.configureClickBehaviourOnRecipies = (recipes) => {
     // Checking if the click is on the h3 or the img
     if ($(e.target).is('h3')) {
       $drinkTitle = $(e.target).text()
+      $('.modal').dialog('open');
     } else if ($(e.target).is('img')) {
       $drinkTitle = $(e.target).prev().text()
+      $('.modal').dialog('open');
     }
 
     // Finding the index number of selected drink
     const selection = recipes.findIndex((drink) => {
       return $drinkTitle === drink.strDrink
-    });
+    })
 
     // Using the original recipe array to find the index of the selected drink
     const $drinkSelected = recipes[selection].strDrink
     cocktailApp.getRecipe($drinkSelected)
   })
-};
+}
 
 cocktailApp.getRecipe = (drink) => {
   return $.ajax({
@@ -142,8 +142,6 @@ cocktailApp.getRecipe = (drink) => {
     dataType: 'JSON',
   })
     .then((res) => {
-
-
       // Getting all necessary data from the recipe to use in displayRecipes function
       const cocktailRecipeArr = res.drinks
       const cocktailRecipeObj = cocktailRecipeArr[0]
@@ -155,7 +153,6 @@ cocktailApp.getRecipe = (drink) => {
         recipeInstructions: cocktailRecipeObj.strInstructions,
         recipeImage: cocktailRecipeObj.strDrinkThumb,
       }
-
 
       // Getting the ingredients and  measurement units for the recipe and storing them in arrays
       for (const property in cocktailRecipeObj) {
@@ -169,18 +166,14 @@ cocktailApp.getRecipe = (drink) => {
 
       cocktailApp.displayRecipes(recipeInfoObj)
 
-
     })
     .fail((err) => {
       console.log(err)
     })
-
-};
-
+}
 
 // Function for displaying recipe on the DOM
 cocktailApp.displayRecipes = (recipe) => {
-  console.log(recipe)
   // Creating the UL element
   const $recipeContainer = $('<div class="modal-content">')
 
@@ -206,21 +199,33 @@ cocktailApp.displayRecipes = (recipe) => {
 
   $recipeContainer.append($recipeContainerLeft, $recipeContainerRight)
 
-  console.log($recipeContainer)
-
   $('.modal').append($recipeContainer)
 
 }
 
+// Function for displaying the modal
+cocktailApp.displayModal = () => {
 
-
+  // Selecting the modal from the DOM
+  $('.modal').dialog({
+    autoOpen: false,
+    modal: true,
+    width: '60%',
+    maxWidth: 800,
+    height: '60%',
+    classes: {
+      'ui-dialog': 'outer-modal',
+      'ui-dialog-content': 'modal-content'
+    },
+    resizeable: false,
+  })
+}
 
 // Code to kick off the app
 cocktailApp.init = function () {
+  cocktailApp.displayModal()
   cocktailApp.onSubmit()
-
 }
-
 
 // Everything that needs to run on page load
 $(function () {
