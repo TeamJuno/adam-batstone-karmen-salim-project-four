@@ -55,7 +55,6 @@ cocktailApp.getRecipes = function (ingredient) {
     })
 }
 
-
 /* Configure Submit Behaviour
   - get the user input
   - call the getRecipes()
@@ -70,10 +69,8 @@ cocktailApp.onSubmit = function () {
     $('input')
       .attr('placeholder', "Enter an ingredient")
 
-
     // Store user input in a variable
     const $userInput = $('input').val().trim()
-
 
     if ($userInput !== '') {
       $('input').removeClass('invalid-input')
@@ -157,12 +154,11 @@ cocktailApp.getRecipe = (drink) => {
         ingredientsUnits: [],
         recipeInstructions: cocktailRecipeObj.strInstructions,
         recipeImage: cocktailRecipeObj.strDrinkThumb,
-        servingGlass: cocktailRecipeObj.strGlass
       }
 
 
       // Getting the ingredients and  measurement units for the recipe and storing them in arrays
-      for (const property in cocktailRecipeObj){
+      for (const property in cocktailRecipeObj) {
         if (property.includes('strIngredient') && cocktailRecipeObj[property] !== null && cocktailRecipeObj[property] !== "") {
           recipeInfoObj.ingredients.push(cocktailRecipeObj[property])
         }
@@ -170,7 +166,8 @@ cocktailApp.getRecipe = (drink) => {
           recipeInfoObj.ingredientsUnits.push(cocktailRecipeObj[property])
         }
       }
-      // cocktailApp.displayRecipes(res)
+
+      cocktailApp.displayRecipes(recipeInfoObj)
 
 
     })
@@ -181,25 +178,39 @@ cocktailApp.getRecipe = (drink) => {
 };
 
 
-// // Function for displaying recipes on the DOM
-// cocktailApp.displayRecipes = (recipe) => {
-//   // Creating the UL element
-//   const $recipeList = $('<ul>')
+// Function for displaying recipe on the DOM
+cocktailApp.displayRecipes = (recipe) => {
+  console.log(recipe)
+  // Creating the UL element
+  const $recipeContainer = $('<div class="modal-content">')
 
-//   // Creating an li element for each recipe element in the array
-//   // TODO Possibly refactor !!!
-//   $.each(recipe, (index, ingredient) => {
-//     // Appending each li to the ul
-//     $recipeList.append(`<li>
-//     <h3>${recipe.strDrink}</h3>
-//     <img src=${recipe.strDrinkThumb} class="drinkImg">
-//   </li>`)
-//   });
+  const $ingredientsList = $('<ul class="ingredient-list">')
 
-//   $('.recipe-container').append($recipeList)
+  recipe.ingredients.forEach((ingredient, index) => {
+    $ingredientsList.append(`<li>${ingredient}: ${recipe.ingredientsUnits[index]}</li>`)
+  })
 
-//   cocktailApp.configureClickBehaviourOnRecipies(recipes)
-// }
+  const $recipeContainerLeft = $(`
+    <div class="recipe-container-left">
+    <h3 class="recipe-name">${recipe.recipeName}</h3>
+    <div class="recipe-img-container"><img src="${recipe.recipeImage}" class="recipe-img"></div>
+    </div>`)
+
+  const $recipeContainerRight = $(`
+    <div class="recipe-container-right">
+    <h3 class="recipe-ingredients-title">Recipe Ingredients</h3>
+    <div class="recipe-ingredients-container">${$ingredientsList}</div>
+    
+    <div class="recipe-instructions-container"><p class="recipe-instructions">${recipe.recipeInstructions}</p></div>
+    </div>`)
+
+  $recipeContainer.append($recipeContainerLeft, $recipeContainerRight)
+
+  console.log($recipeContainer)
+
+  $('.modal').append($recipeContainer)
+
+}
 
 
 
