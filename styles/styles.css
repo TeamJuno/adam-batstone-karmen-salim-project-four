@@ -442,8 +442,36 @@ img {
 /* COLORS
 ========================== */
 @media (max-width: 900px) {
+  /* Header */
+  .header-content {
+    display: block !important;
+  }
+  .header-mobile-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
   .header-nav {
     display: none;
+    position: absolute;
+    width: 100%;
+  }
+  .header-nav ul {
+    display: block !important;
+    max-width: 90%;
+    text-align: right;
+  }
+  .header-nav li {
+    display: block;
+  }
+  .header-nav-list li:last-child {
+    margin-left: 0;
   }
   .mobile-nav {
     display: block !important;
@@ -509,7 +537,7 @@ h3 {
 /* ========================== */
 /* Header*/
 header {
-  height: 100vh;
+  min-height: 100vh;
   background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.7))), url(../assets/banner.jpg);
   background-image: linear-gradient(to top rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../assets/banner.jpg);
   background-attachment: fixed;
@@ -536,11 +564,14 @@ header {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  width: 500px;
 }
 
 .header-nav-list a {
   color: #EFAC27;
+}
+
+.header-nav-list li:last-child {
+  margin-left: 50px;
 }
 
 .header-description {

@@ -21,12 +21,14 @@
   <header>
     <div class="wrapper">
       <div class="header-content">
-        <h1>Mixologié.</h1>
-        <a class="mobile-nav"><i class="fas fa-bars"></i></a>
+        <div class="header-mobile-container">
+          <h1>Mixologié.</h1>
+          <a class="mobile-nav"><i class="fas fa-bars"></i></a>
+        </div>
         <nav class="header-nav js-nav">
           <ul class="header-nav-list">
-            <li><a href="">About</a></li>
-            <li><a href="">Cocktail Recipes</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#main">Cocktail Recipes</a></li>
           </ul>
         </nav>
       </div>
@@ -37,7 +39,7 @@
   </header>
 
   <main>
-    <section class="about">
+    <section id="about" class="about">
       <div class="wrapper">
         <div class="about-content">
           <h2>
@@ -52,7 +54,7 @@
     </section>
     <!-- About Section ENDS -->
 
-    <section class="main">
+    <section id="main" class="main">
       <div class="wrapper">
         <div class="main-title">
           <h2>Cocktail Recipes</h2>
@@ -64,7 +66,7 @@
           </div>
           <div class="main-search">
             <div class="main-content">
-              <p>Instruction how to use the search</p>
+              <p>Find the perfect cocktail:</p>
               <ul>
                 <li>enter search</li>
                 <li>enter search</li>

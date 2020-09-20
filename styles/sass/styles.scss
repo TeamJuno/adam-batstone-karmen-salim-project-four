@@ -49,7 +49,7 @@ h3 {
 
 /* Header*/
 header {
-  height: 100vh;
+  min-height: 100vh;
   // background-image: url(../assets/banner.jpg);
   background-image: linear-gradient(to top rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../assets/banner.jpg);
   background-attachment: fixed;
@@ -66,12 +66,16 @@ header {
 .header-nav-list {
   display: flex;
   justify-content: space-evenly;
-  width: 500px;
-
+  
   a {
     color: $primary-color;
   }
+
+  li:last-child {
+    margin-left: 50px;
+  }
 }
+
 
 .header-description {
   width: 100%;
