@@ -137,7 +137,7 @@ cocktailApp.configureClickBehaviourOnRecipies = (recipes) => {
   $('li').on('click', (e) => {
 
     // Variable for storing the click
-    let $drinkTitile
+    let $drinkTitle
 
     // Checking if the click is on the h3 or the img
     if ($(e.target).is('h3')) {
@@ -202,6 +202,9 @@ cocktailApp.getRecipe = (drink) => {
 
 // Function for displaying recipe on the DOM
 cocktailApp.displayRecipes = (recipe) => {
+  // clear the modal content
+  $('.modal').html("")
+  
   // Creating the UL element
   const $recipeContainer = $('<div class="modal-content">')
 
@@ -223,7 +226,7 @@ cocktailApp.displayRecipes = (recipe) => {
   </div>`)
 
 
-  const $recipeContainerInstrucitons = $(`
+  const $recipeContainerInstructions = $(`
     <div class="recipe-container-instructions">
     <h3 class="instructions=title">Instructions</h3>
     <p class="recipe-instructions">${recipe.recipeInstructions}</p></div>
@@ -231,9 +234,10 @@ cocktailApp.displayRecipes = (recipe) => {
 
   $($recipeContainerIngredients).append($ingredientsList)
 
-  $recipeContainer.append($recipeContainerImage, $recipeContainerIngredients, $recipeContainerInstrucitons)
+  $recipeContainer.append($recipeContainerImage, $recipeContainerIngredients, $recipeContainerInstructions)
 
   $('.modal').append($recipeContainer)
+
 
 }
 
@@ -251,7 +255,7 @@ cocktailApp.displayModal = () => {
       'ui-dialog': 'outer-modal',
       'ui-dialog-content': 'modal-content'
     },
-    resizeable: false,
+    resizable: false,
   })
 }
 
