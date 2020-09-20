@@ -38,13 +38,41 @@ cocktailApp.getRecipes = function (ingredient) {
       for (let i = 0; i <= 30; i++) {
 
         // Get random recipes from the results object
-        const randomRecipes = Math.floor(Math.random() * res.drinks.length)
+        const randomIndex = Math.floor(Math.random() * res.drinks.length)
+        console.log('res.drinks: ', res.drinks)
 
-        drinksToDisplay.push(res.drinks[randomRecipes])
+        // breaks out of the for loop if the response is less than 30
+        // otherwise the loop will keep going and add undefined to drinksToDisplay
+        if(res.drinks.length === 0) {
+          break
+        }
+
+        // These are functionally equivalent
+        if (true) {
+          // remove the item and then push it
+          const removedItems = res.drinks.splice(randomIndex, 1)
+          console.log('removedItems:', removedItems)
+
+          const itemToAdd = removedItems[0]
+          console.log('itemToAdd:', itemToAdd)
+
+          drinksToDisplay.push(itemToAdd)
+        } else {
+          // read the item without removing it
+          const itemToAdd = res.drinks[randomIndex]
+          drinksToDisplay.push(itemToAdd)
+          // remove item from the original array after it has been pushed to the
+          res.drinks.splice(randomIndex, 1)
+        }
       }
 
-      // TODO figure out how to refactor this. Possibly call the function outside. Need access to recipesToDisplay
+      console.log('drinksToDisplay:', drinksToDisplay)
+
+
+      // TODO figure out how to refactor this. Possibly call the function outside.
+      // Need access to recipesToDisplay
       cocktailApp.displayDrinks(drinksToDisplay)
+
     })
     .fail(() => {
 
@@ -88,6 +116,7 @@ cocktailApp.onSubmit = function () {
 
 // Function for displaying drinks on the DOM
 cocktailApp.displayDrinks = (recipes) => {
+  console.log('displayDrinks recipes: ', recipes)
   // Creating the UL element
   const $drinksList = $('<ul>')
 
@@ -193,7 +222,7 @@ cocktailApp.displayRecipes = (recipe) => {
     <div class="recipe-container-right">
     <h3 class="recipe-ingredients-title">Recipe Ingredients</h3>
     <div class="recipe-ingredients-container">${$ingredientsList}</div>
-    
+
     <div class="recipe-instructions-container"><p class="recipe-instructions">${recipe.recipeInstructions}</p></div>
     </div>`)
 
