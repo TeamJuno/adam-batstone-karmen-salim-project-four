@@ -39,21 +39,21 @@ cocktailApp.getRecipes = function (ingredient) {
 
         // Get random recipes from the results object
         const randomIndex = Math.floor(Math.random() * res.drinks.length)
-        console.log('res.drinks: ', res.drinks)
+        // console.log('res.drinks: ', res.drinks)
 
         // breaks out of the for loop if the response is less than 30
         // otherwise the loop will keep going and add undefined to drinksToDisplay
-        if(res.drinks.length === 0) {
+        if (res.drinks.length === 0) {
           break
         }
 
         // remove the item and then push it
         // this ensure that there will be no repeat recipes in the display function
         const removedItems = res.drinks.splice(randomIndex, 1)
-        console.log('removedItems:', removedItems)
+        // console.log('removedItems:', removedItems)
 
         const itemToAdd = removedItems[0]
-        console.log('itemToAdd:', itemToAdd)
+        // console.log('itemToAdd:', itemToAdd)
 
         drinksToDisplay.push(itemToAdd)
       }
@@ -63,7 +63,7 @@ cocktailApp.getRecipes = function (ingredient) {
 
       // TODO figure out how to refactor this. Possibly call the function outside.
       // sort the recipes to display in alphabetical order
-      drinksToDisplay.sort((a, b)=> {
+      drinksToDisplay.sort((a, b) => {
         return (a.strDink < b.strDrink) ? -1 : (a.strDrink > b.strDrink) ? 1 : 0
       })
       // Need access to recipesToDisplay
@@ -111,7 +111,7 @@ cocktailApp.onSubmit = function () {
 
 // Function for displaying drinks on the DOM
 cocktailApp.displayDrinks = (recipes) => {
-  console.log('displayDrinks recipes: ', recipes)
+  // console.log('displayDrinks recipes: ', recipes)
   // Creating the UL element
   const $drinksList = $('<ul>')
 
@@ -178,13 +178,17 @@ cocktailApp.getRecipe = (drink) => {
         recipeImage: cocktailRecipeObj.strDrinkThumb,
       }
 
+      console.log(cocktailRecipeArr)
+
       // Getting the ingredients and  measurement units for the recipe and storing them in arrays
       for (const property in cocktailRecipeObj) {
         if (property.includes('strIngredient') && cocktailRecipeObj[property] !== null && cocktailRecipeObj[property] !== "") {
           recipeInfoObj.ingredients.push(cocktailRecipeObj[property])
         }
-        if (property.includes('strMeasure') && cocktailRecipeObj[property] !== null && cocktailRecipeObj[property] !== "") {
+        if (property.includes('strMeasure') && cocktailRecipeObj[property] !== null && cocktailRecipeObj[property] !== "" && cocktailRecipeObj[property]) {
           recipeInfoObj.ingredientsUnits.push(cocktailRecipeObj[property])
+        } else if (property.includes('strMeasure') && cocktailRecipeObj[property] == undefined) {
+          recipeInfoObj.ingredientsUnits.push('Personal Preference')
         }
       }
 
@@ -203,8 +207,12 @@ cocktailApp.displayRecipes = (recipe) => {
 
   const $ingredientsList = $('<ul class="ingredient-list">')
 
+
+
+
   recipe.ingredients.forEach((ingredient, index) => {
     $ingredientsList.append(`<li>${ingredient}: ${recipe.ingredientsUnits[index]}</li>`)
+    console.log(`${ingredient}: ${recipe.ingredientsUnits[index]}`)
   })
 
   const $recipeContainerLeft = $(`
@@ -216,7 +224,7 @@ cocktailApp.displayRecipes = (recipe) => {
   const $recipeContainerRight = $(`
     <div class="recipe-container-right">
     <h3 class="recipe-ingredients-title">Recipe Ingredients</h3>
-    <div class="recipe-ingredients-container">${$ingredientsList}</div>
+    <div class="recipe-ingredients-container"></div>
 
     <div class="recipe-instructions-container"><p class="recipe-instructions">${recipe.recipeInstructions}</p></div>
     </div>`)
