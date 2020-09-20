@@ -207,29 +207,31 @@ cocktailApp.displayRecipes = (recipe) => {
 
   const $ingredientsList = $('<ul class="ingredient-list">')
 
-
-
-
   recipe.ingredients.forEach((ingredient, index) => {
     $ingredientsList.append(`<li>${ingredient}: ${recipe.ingredientsUnits[index]}</li>`)
-    console.log(`${ingredient}: ${recipe.ingredientsUnits[index]}`)
   })
 
-  const $recipeContainerLeft = $(`
-    <div class="recipe-container-left">
+  console.log($ingredientsList)
+  const $recipeContainerImage = $(`
+    <div class="recipe-container-image">
     <h3 class="recipe-name">${recipe.recipeName}</h3>
     <div class="recipe-img-container"><img src="${recipe.recipeImage}" class="recipe-img"></div>
     </div>`)
 
-  const $recipeContainerRight = $(`
-    <div class="recipe-container-right">
-    <h3 class="recipe-ingredients-title">Recipe Ingredients</h3>
-    <div class="recipe-ingredients-container"></div>
+  const $recipeContainerIngredients = $(`<div class="recipe-container-ingredients">
+  <h3 class="recipe-ingredients-title">Recipe Ingredients</h3>
+  </div>`)
 
-    <div class="recipe-instructions-container"><p class="recipe-instructions">${recipe.recipeInstructions}</p></div>
-    </div>`)
 
-  $recipeContainer.append($recipeContainerLeft, $recipeContainerRight)
+  const $recipeContainerInstrucitons = $(`
+    <div class="recipe-container-instructions">
+    <h3 class="instructions=title">Instructions</h3>
+    <p class="recipe-instructions">${recipe.recipeInstructions}</p></div>
+    `)
+
+  $($recipeContainerIngredients).append($ingredientsList)
+
+  $recipeContainer.append($recipeContainerImage, $recipeContainerIngredients, $recipeContainerInstrucitons)
 
   $('.modal').append($recipeContainer)
 
