@@ -35,3 +35,18 @@
   }
 
 }
+
+
+@media (max-width: 360px) {
+
+    h1 {
+      font-size: 1.5rem!important;
+  }
+
+  .mobile-nav {
+    i {
+      font-size: 1.6rem!important;
+    }
+  }
+
+}

@@ -478,16 +478,25 @@ img {
   }
 }
 
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  .mobile-nav i {
+    font-size: 1.6rem !important;
+  }
+}
+
 /* Global */
 html {
-  font-size: 62.5%;
+  font-size: 100%;
   height: 100%;
 }
 
 body {
   color: #FAFAFA;
   font-family: 'Raleway', 'Times', 'Arial', sans-serif;
-  font-size: 2.2rem;
+  font-size: calc(1.1rem + 1.1vw);
   line-height: 2.2;
   letter-spacing: 0.12rem;
   font-weight: 400;
@@ -510,8 +519,8 @@ a {
 
 h1 {
   font-family: 'Ovo', 'Times', 'Arial', serif;
-  font-size: calc(2.2rem + 2.2vw);
-  letter-spacing: 1.2rem;
+  font-size: calc(1.9rem + 1.9vw);
+  letter-spacing: calc(0.6rem + 0.6vw);
   line-height: 2.8;
   font-weight: 600;
   color: #EFAC27;
@@ -519,8 +528,8 @@ h1 {
 
 h2 {
   font-family: 'Ovo', 'Times', 'Arial', serif;
-  font-size: 3rem;
-  letter-spacing: 0.5rem;
+  font-size: calc(1.4rem + 1.4vw);
+  letter-spacing: calc(0.25rem + 0.25vw);
   line-height: 2.2;
   font-weight: 500;
   color: #EFAC27;
@@ -528,8 +537,8 @@ h2 {
 
 h3 {
   font-family: 'Ovo', 'Times', 'Arial', serif;
-  font-size: 4rem;
-  letter-spacing: 0.5rem;
+  font-size: calc(1.7rem + 1.7vw);
+  letter-spacing: calc(0.25rem + 0.25vw);
   line-height: 2.2;
   font-weight: 500;
   color: #EFAC27;
@@ -602,7 +611,7 @@ header {
 
 .mobile-nav i {
   color: #EFAC27;
-  font-size: 3.5rem;
+  font-size: calc(1.7rem + 1.7vw);
 }
 
 /* About */
@@ -693,9 +702,9 @@ header {
 
 input {
   font-family: 'Raleway', 'Times', 'Arial', sans-serif;
-  font-size: 2rem;
+  font-size: calc(1rem + 1vw);
   line-height: 1.6;
-  letter-spacing: 0.1rem;
+  letter-spacing: calc(0.05rem + 0.05vw);
   font-weight: 400;
   outline: none;
   border: none;
@@ -717,9 +726,9 @@ input:active {
 /* Buttons */
 .btn {
   font-family: 'Raleway', 'Times', 'Arial', sans-serif;
-  font-size: 2rem;
+  font-size: calc(1rem + 1vw);
   line-height: 1.6;
-  letter-spacing: 0.1rem;
+  letter-spacing: calc(0.05rem + 0.05vw);
   font-weight: 400;
   color: #FAFAFA;
   background-color: #EFAC27;
@@ -769,7 +778,7 @@ footer {
 
 .footer-nav-list a {
   color: #EFAC27;
-  font-size: 2rem;
+  font-size: calc(05rem + 0.5vw);
 }
 
 .footer-copyright {
@@ -786,7 +795,7 @@ footer {
 .footer-copyright span,
 .footer-copyright a {
   color: #B56629;
-  font-size: 1.8rem;
+  font-size: calc(0.9rem + 0.9vw);
 }
 
 /* Recipe Container */
