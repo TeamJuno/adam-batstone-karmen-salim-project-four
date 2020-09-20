@@ -441,6 +441,15 @@ img {
 ========================== */
 /* COLORS
 ========================== */
+@media (max-width: 900px) {
+  .header-nav {
+    display: none;
+  }
+  .mobile-nav {
+    display: block !important;
+  }
+}
+
 /* Global */
 html {
   font-size: 62.5%;
@@ -448,7 +457,6 @@ html {
 }
 
 body {
-  font-size: 2rem;
   color: #FAFAFA;
   font-family: 'Raleway', 'Times', 'Arial', sans-serif;
   font-size: 2.2rem;
@@ -474,10 +482,10 @@ a {
 
 h1 {
   font-family: 'Ovo', 'Times', 'Arial', serif;
-  font-size: 5rem;
-  letter-spacing: 600;
+  font-size: 5.4rem;
+  letter-spacing: 1.2rem;
   line-height: 2.8;
-  font-weight: 1rem;
+  font-weight: 600;
   color: #EFAC27;
 }
 
@@ -502,7 +510,9 @@ h3 {
 /* Header*/
 header {
   height: 100vh;
-  background-image: url(../assets/banner.jpg);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.7))), url(../assets/banner.jpg);
+  background-image: linear-gradient(to top rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../assets/banner.jpg);
+  background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -523,9 +533,9 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   width: 500px;
 }
 
@@ -547,8 +557,19 @@ header {
           align-items: center;
 }
 
-.header-description p {
-  width: 600px;
+.header-description h2 {
+  width: 100%;
+  text-align: center;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: none;
+}
+
+.mobile-nav i {
+  color: #EFAC27;
+  font-size: 3.5rem;
 }
 
 /* About */
