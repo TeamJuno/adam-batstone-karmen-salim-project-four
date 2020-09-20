@@ -510,7 +510,7 @@ a {
 
 h1 {
   font-family: 'Ovo', 'Times', 'Arial', serif;
-  font-size: 5.4rem;
+  font-size: calc(2.2rem + 2.2vw);
   letter-spacing: 1.2rem;
   line-height: 2.8;
   font-weight: 600;
@@ -523,6 +523,7 @@ h2 {
   letter-spacing: 0.5rem;
   line-height: 2.2;
   font-weight: 500;
+  color: #EFAC27;
 }
 
 h3 {
@@ -591,6 +592,7 @@ header {
 .header-description h2 {
   width: 100%;
   text-align: center;
+  color: #FAFAFA !important;
 }
 
 /* Mobile Navigation */
@@ -633,7 +635,8 @@ header {
 }
 
 .about-content p {
-  width: 600px;
+  max-width: 600px;
+  text-align: center;
 }
 
 /* Main */

@@ -31,13 +31,15 @@ a {
   text-decoration: none;
 }
 
+
 h1 {
-  @include secondary-font(5.4rem, 2.8, 1.2rem, 600);
+  @include secondary-font(calc(2.2rem + 2.2vw), 2.8, 1.2rem, 600);
   color: $primary-color;
 }
 
 h2 {
   @include secondary-font(3rem, 2.2, 0.5rem, 500);
+  color: $primary-color;
 }
 
 h3 {
@@ -66,7 +68,7 @@ header {
 .header-nav-list {
   display: flex;
   justify-content: space-evenly;
-  
+
   a {
     color: $primary-color;
   }
@@ -87,6 +89,7 @@ header {
   h2 {
     width: 100%;
     text-align: center;
+    color: $primary-text-color!important;
   }
 }
 
@@ -118,7 +121,8 @@ header {
   align-items: center;
 
   p {
-    width: 600px;
+    max-width: 600px;
+    text-align: center;
   }
 }
 
