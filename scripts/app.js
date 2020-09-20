@@ -48,6 +48,7 @@ cocktailApp.getRecipes = function (ingredient) {
         }
 
         // remove the item and then push it
+        // this ensure that there will be no repeat recipes in the display function
         const removedItems = res.drinks.splice(randomIndex, 1)
         console.log('removedItems:', removedItems)
 
@@ -55,19 +56,21 @@ cocktailApp.getRecipes = function (ingredient) {
         console.log('itemToAdd:', itemToAdd)
 
         drinksToDisplay.push(itemToAdd)
-
       }
 
       console.log('drinksToDisplay:', drinksToDisplay)
 
 
       // TODO figure out how to refactor this. Possibly call the function outside.
+      // sort the recipes to display in alphabetical order
+      drinksToDisplay.sort((a, b)=> {
+        return (a.strDink < b.strDrink) ? -1 : (a.strDrink > b.strDrink) ? 1 : 0
+      })
       // Need access to recipesToDisplay
       cocktailApp.displayDrinks(drinksToDisplay)
 
     })
     .fail(() => {
-
       $('.recipe-container').html('<p class="error-text">No Results found</p>')
       $('input').trigger('focus').addClass('invalid-input')
     })
