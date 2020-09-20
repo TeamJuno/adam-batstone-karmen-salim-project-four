@@ -13,7 +13,7 @@ html {
 
 body {
   color: $primary-text-color;
-  @include primary-font(calc(1.1rem + 1.1vw), 2.2, 0.12rem)
+  @include primary-font(calc(0.9rem + 0.9vw), 2.2, 0.12rem)
 }
 
 .wrapper {
@@ -45,6 +45,7 @@ h3 {
   @include secondary-font(calc(1.7rem + 1.7vw), 2.2, calc(0.25rem + 0.25vw), 500);
   color: $primary-color;
 }
+
 /* ========================== */
 
 
@@ -136,6 +137,7 @@ header {
 .main-title {
   display: flex;
   justify-content: center;
+  margin-bottom: 4rem;
 }
 
 .main-container {
@@ -149,14 +151,18 @@ header {
   padding: 10px;
 }
 
+.main-search {
+  margin-left: calc(4rem + 4vw);
+  width: 50%;
+}
+
 .main-content {
   margin-bottom: 20px;
 }
 
-
 /* Main Image */
 .main-img {
-  width: 300px;
+  width: 50%;
 }
 
 
@@ -165,14 +171,20 @@ header {
   border: 1px solid red;
 }
 
+form {
+  display: flex;
+}
+
+
 input {
-  @include primary-font(calc(1rem + 1vw), 1.6, calc(0.05rem + 0.05vw));
+  @include primary-font(calc(0.8rem + 0.8vw), 1.6, calc(0.05rem + 0.05vw));
   outline: none;
   border: none;
   padding: 10px;
   border-bottom: 1px solid $secondary-warning-color;
   color: $primary-text-color!important;
   background: transparent;
+  width: 60%;
 }
 
 input:focus {
@@ -195,6 +207,7 @@ input:active {
   margin-left: 5px;
   text-align: center;
   padding: 10px 20px;
+  width: 40%;
 }
 
 button:hover,
