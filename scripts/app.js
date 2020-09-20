@@ -19,6 +19,18 @@
 // TODO - FIX centering of modal window on resize
 // TODO - make sure the drinksToDisplay arr only contains one of each drink type
 
+
+// TODO - MODALLLLL fix
+// TODO - check accessibilty on the hamburger menu AND recipe-container
+// TODO - Background color on recipe container, veritcally center the h3 text inside a div
+// TODO - Hover and focus states on links
+// TODO - change style on input when it's invalid
+// TODO - add scroll on navigation links
+
+// TODO - add buttons that change how search will function
+
+
+
 // App Object
 const cocktailApp = {}
 
@@ -121,7 +133,7 @@ cocktailApp.displayDrinks = (recipes) => {
     // Appending each li to the ul
     $drinksList.append(`<li>
     <h3>${recipe.strDrink}</h3>
-    <img src=${recipe.strDrinkThumb} class="drinkImg">
+    <img src=${recipe.strDrinkThumb} class="drink-img">
   </li>`)
   })
 
@@ -204,7 +216,7 @@ cocktailApp.getRecipe = (drink) => {
 cocktailApp.displayRecipes = (recipe) => {
   // clear the modal content
   $('.modal').html("")
-  
+
   // Creating the UL element
   const $recipeContainer = $('<div class="modal-content">')
 

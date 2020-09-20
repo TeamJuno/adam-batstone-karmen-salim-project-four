@@ -41,6 +41,12 @@
   .main-search {
     margin-left: 0!important;
   }
+
+  .main-img,
+  .main-search {
+    width: 80%!important;
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -60,6 +66,25 @@
     padding: 5px 10px!important;
   }
   
+}
+
+@media (max-width: 480px) {
+
+
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-logo {
+    order: 2;
+    margin-top: 2.5rem;;
+  }
+
+  .footer-nav-list {
+    justify-content: center;
+    align-items: center;
+  }
+
 
 }
 
