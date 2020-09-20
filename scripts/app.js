@@ -47,23 +47,15 @@ cocktailApp.getRecipes = function (ingredient) {
           break
         }
 
-        // These are functionally equivalent
-        if (true) {
-          // remove the item and then push it
-          const removedItems = res.drinks.splice(randomIndex, 1)
-          console.log('removedItems:', removedItems)
+        // remove the item and then push it
+        const removedItems = res.drinks.splice(randomIndex, 1)
+        console.log('removedItems:', removedItems)
 
-          const itemToAdd = removedItems[0]
-          console.log('itemToAdd:', itemToAdd)
+        const itemToAdd = removedItems[0]
+        console.log('itemToAdd:', itemToAdd)
 
-          drinksToDisplay.push(itemToAdd)
-        } else {
-          // read the item without removing it
-          const itemToAdd = res.drinks[randomIndex]
-          drinksToDisplay.push(itemToAdd)
-          // remove item from the original array after it has been pushed to the
-          res.drinks.splice(randomIndex, 1)
-        }
+        drinksToDisplay.push(itemToAdd)
+
       }
 
       console.log('drinksToDisplay:', drinksToDisplay)
