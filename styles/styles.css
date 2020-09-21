@@ -476,6 +476,7 @@ img {
   .mobile-nav {
     display: block !important;
   }
+  /* Main */
   .main-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -492,6 +493,7 @@ img {
 }
 
 @media (max-width: 768px) {
+  /* Form */
   form {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -510,6 +512,7 @@ img {
 }
 
 @media (max-width: 480px) {
+  /* Footer */
   .footer-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -533,6 +536,7 @@ img {
 }
 
 @media (max-width: 360px) {
+  /* Header */
   h1 {
     font-size: 1.5rem !important;
   }
@@ -821,7 +825,7 @@ button:focus {
   opacity: 0.7;
 }
 
-/* Form */
+/* Dynamically Added Recipe Container */
 .recipe-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -935,22 +939,10 @@ footer {
 .footer-copyright span,
 .footer-copyright a {
   font-size: calc(0.7rem + 0.7vw);
+  color: #B56629 !important;
 }
 
-.footer-copyright span {
-  color: #B56629;
-}
-
-.footer-copyright a {
-  color: #FAFAFA;
-}
-
-/* Recipe Container */
-.recipe-container {
-  height: 100%;
-  padding: 100px 0px;
-}
-
+/* Dynamic Modal */
 .drinkImg {
   height: 200px;
   width: 200px;
@@ -964,6 +956,7 @@ footer {
   background: #ec4e4e;
 }
 
+/* jQuery ui classes needed for the modal */
 .ui-widget-overlay {
   background: #aaaaaa url("images/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
   opacity: .3;
