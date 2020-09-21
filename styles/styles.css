@@ -539,6 +539,12 @@ img {
   h1 {
     font-size: 1.5rem !important;
   }
+  .modal-content h3 {
+    font-size: 1.2rem !important;
+  }
+  .modal-content p, .modal-content li {
+    font-size: 1rem !important;
+  }
   .mobile-nav i {
     font-size: 1.6rem !important;
   }
@@ -601,6 +607,15 @@ h2 {
 }
 
 h3 {
+  font-family: 'Ovo', 'Times', 'Arial', serif;
+  font-size: calc(1.7rem + 1.7vw);
+  letter-spacing: calc(0.25rem + 0.25vw);
+  line-height: 2.2;
+  font-weight: 500;
+  color: #EFAC27;
+}
+
+h4 {
   font-family: 'Ovo', 'Times', 'Arial', serif;
   font-size: calc(1.7rem + 1.7vw);
   letter-spacing: calc(0.25rem + 0.25vw);
@@ -793,7 +808,8 @@ input {
   width: 60%;
 }
 
-input:focus {
+input:focus,
+button:focus {
   outline: 0.1px dotted #EFAC27;
 }
 
@@ -820,7 +836,6 @@ input:active {
 
 button:hover,
 button:focus {
-  cursor: pointer;
   opacity: 0.7;
 }
 
@@ -955,24 +970,29 @@ footer {
           align-items: center;
 }
 
+.outer-modal {
+  background: #262119;
+}
+
+.modal-content {
+  background: #070808;
+}
+
 .ui-button {
   font-family: 'Raleway', 'Times', 'Arial', sans-serif;
-  font-size: calc(1rem + 1vw);
-  line-height: 1.6;
+  font-size: calc(0.7rem + 0.7vw);
+  line-height: 1.9;
   letter-spacing: calc(0.05rem + 0.05vw);
   font-weight: 400;
   color: #FAFAFA;
-  background-color: #B56629;
-  border: 1px solid #CEA533;
+  background-color: #EFAC27;
+  border: none;
   padding: 10px 20px;
-  width: 40%;
+  width: 20%;
+  text-transform: uppercase;
 }
 
-.ui-button:hover, .ui-button:focus {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
+/* Modal Content Blocks */
 .recipe-container-media,
 .recipe-container-ingredients,
 .recipe-container-instructions {
@@ -989,7 +1009,8 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 25px 0;
+  text-align: center;
+  padding: 25px 10px;
 }
 
 .recipe-img-container {
@@ -998,14 +1019,6 @@ footer {
 
 .recipe-container-instructions p {
   width: 80%;
-}
-
-.outer-modal {
-  background: #EFAC27;
-}
-
-.modal-content {
-  background: #070808;
 }
 
 /* jQuery ui classes needed for the modal */

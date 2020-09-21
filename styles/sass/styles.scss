@@ -53,6 +53,10 @@ h3 {
   color: $primary-color;
 }
 
+h4 {
+  @include secondary-font(calc(1.7rem + 1.7vw), 2.2, calc(0.25rem + 0.25vw), 500);
+  color: $primary-color;
+}
 /* ========================== */
 
 
@@ -196,7 +200,8 @@ input {
   width: 60%;
 }
 
-input:focus {
+input:focus,
+button:focus {
   outline: 0.1px dotted $primary-color;
 }
 
@@ -220,7 +225,6 @@ input:active {
 
 button:hover,
 button:focus {
-  cursor: pointer;
   opacity: 0.7;
 }
 
@@ -307,27 +311,32 @@ footer {
 }
 
 /* Dynamic Modal */
-
 .ui-dialog-titlebar {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.ui-button {
-  @include primary-font(calc(1rem + 1vw), 1.6, calc(0.05rem + 0.05vw));
-  color: $primary-text-color;
-  background-color: $secondary-warning-color;
-  border: 1px solid $warning-color;
-  padding: 10px 20px;
-  width: 40%;
-    &:hover,
-    &:focus {
-    cursor: pointer;
-    opacity: 0.7;
-  }
+.outer-modal {
+  background: $secondary-background-color;
 }
 
+.modal-content {
+  background: $primary-background-color;
+}
+
+.ui-button {
+  @include primary-font(calc(0.7rem + 0.7vw), 1.9, calc(0.05rem + 0.05vw));
+  color: $primary-text-color;
+  background-color: $primary-color;
+  border: none;
+  padding: 10px 20px;
+  width: 20%;
+  text-transform: uppercase;
+}
+
+
+/* Modal Content Blocks */
 .recipe-container-media,
 .recipe-container-ingredients,
 .recipe-container-instructions {
@@ -335,7 +344,8 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 25px 0;
+  text-align: center;
+  padding: 25px 10px;
 }
 
 .recipe-img-container {
@@ -346,13 +356,7 @@ footer {
   width: 80%;
 }
 
-.outer-modal {
-  background: $primary-color;
-}
 
-.modal-content {
-  background: $primary-background-color;
-}
 
 
 /* jQuery ui classes needed for the modal */
