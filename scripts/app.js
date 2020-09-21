@@ -24,7 +24,10 @@
 // TODO - check accessibilty on the hamburger menu AND recipe-container
 // TODO - Hover and focus states on links
 // TODO - change style on input when it's invalid
-// TODO - add scroll on navigation links
+// TODO - add scroll on navigation links - DONE
+// TO DO - fix the hamburger menu
+// TO DO = all dynamically added images should have alt (recipe container and modal)
+// TO DO = add instructions to the find cocktail section
 
 // TODO - add buttons that change how search will function
 
