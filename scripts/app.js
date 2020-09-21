@@ -130,12 +130,16 @@ cocktailApp.displayDrinks = (recipes) => {
   // Creating an li element for each recipe element in the array
   $.each(recipes, (index, recipe) => {
     // Appending each li to the ul
-    $drinksList.append(`<li>
-    <div class="drink-title">
-    <h3>${recipe.strDrink}</h3>
-    </div>
-    <img src=${recipe.strDrinkThumb}>
-    </li>`)
+    $drinksList.append(`
+      <li class="recipe-card">
+        <button class="recipe-details">
+        <div class="drink-title">
+        <h3 class="recipe-card-title">${recipe.strDrink}</h3>
+        </div>
+        <img src=${recipe.strDrinkThumb}>
+        </button>
+      </li>
+    `)
   })
 
   $('.recipe-container').append($drinksList)
@@ -144,33 +148,35 @@ cocktailApp.displayDrinks = (recipes) => {
 }
 
 
-cocktailApp.configureClickBehaviourOnRecipes = (recipes) => {
+cocktailApp.configureClickBehaviourOnRecipes = function (recipes) {
   // Getting the users click on recipe
-  $('li').on('click', (e) => {
+  $('.recipe-card').on('click', '.recipe-card-title', function (e) {
+    console.log('e.target', e.target)
+    console.log('this:', this)
 
-    // Variable for storing the click
-    let $drinkTitle
+    const $drinkTitle = $(this).text()
+    console.log('drinkTitle:', $drinkTitle)
 
-    // Checking if the click is on the h3 or the img
-    if ($(e.target).is('h3')) {
-      $drinkTitle = $(e.target).text()
-      $('.modal').dialog('open')
-      cocktailApp.getRecipeBySelection($drinkTitle, recipes)
-    } else if ($(e.target).is('img')) {
-      $drinkTitle = $(e.target).prev().text()
-      $('.modal').dialog('open')
-      cocktailApp.getRecipeBySelection($drinkTitle, recipes)
-    }
+    $('.modal').dialog('open')
+    cocktailApp.getRecipeBySelection($drinkTitle, recipes)
+
   })
 }
 
 
 // Configure the recipe selection to use once the user clicks on a recipe
 cocktailApp.getRecipeBySelection = (drinkTitle, recipes) => {
+
+
+  console.log('drinkTittle:', drinkTitle)
   // Find the index number of selected drink
   const selection = recipes.findIndex((drink) => {
+    console.log('drinkTitle', drinkTitle, 'drink.strDrink:', drink.strDrink)
+
     return drinkTitle === drink.strDrink
   })
+  console.log('selection', selection)
+  console.log('recipe[selection]', recipes[selection])
 
   const $drinkSelected = recipes[selection].strDrink
   cocktailApp.getRecipe($drinkSelected)

@@ -308,6 +308,17 @@ footer {
 
 
 /* Dynamic Modal */
+
+.recipe-container-image,
+.recipe-container-ingredients,
+.recipe-container-instructions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .outer-modal {
   background: rgb(23, 182, 31);
 }
