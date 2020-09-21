@@ -71,12 +71,11 @@ cocktailApp.getRecipes = function (ingredient) {
 
       console.log('drinksToDisplay:', drinksToDisplay)
 
-
-      // TODO figure out how to refactor this. Possibly call the function outside.
       // sort the recipes to display in alphabetical order
       drinksToDisplay.sort((a, b) => {
-        return (a.strDink < b.strDrink) ? -1 : (a.strDrink > b.strDrink) ? 1 : 0
-      })
+				// solution for sorting in all browsers https://stackoverflow.com/questions/1969145/sorting-javascript-array-with-chrome
+				return a.strDrink < b.strDrink ? -1 : 1
+			})
       // Need access to recipesToDisplay
       cocktailApp.displayDrinks(drinksToDisplay)
 
@@ -134,7 +133,7 @@ cocktailApp.displayDrinks = (recipes) => {
     <div class="drink-title">
     <h3>${recipe.strDrink}</h3>
     </div>
-    <img src=${recipe.strDrinkThumb}> 
+    <img src=${recipe.strDrinkThumb}>
     </li>`)
   })
 
