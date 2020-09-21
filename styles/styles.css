@@ -943,7 +943,37 @@ footer {
 }
 
 /* Dynamic Modal */
-.recipe-container-image,
+.ui-dialog-titlebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ui-button {
+  font-family: 'Raleway', 'Times', 'Arial', sans-serif;
+  font-size: calc(1rem + 1vw);
+  line-height: 1.6;
+  letter-spacing: calc(0.05rem + 0.05vw);
+  font-weight: 400;
+  color: #FAFAFA;
+  background-color: #B56629;
+  border: 1px solid #CEA533;
+  padding: 10px 20px;
+  width: 40%;
+}
+
+.ui-button:hover, .ui-button:focus {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.recipe-container-media,
 .recipe-container-ingredients,
 .recipe-container-instructions {
   display: -webkit-box;
@@ -959,14 +989,23 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 25px 0;
+}
+
+.recipe-img-container {
+  width: 70%;
+}
+
+.recipe-container-instructions p {
+  width: 80%;
 }
 
 .outer-modal {
-  background: #17b61f;
+  background: #EFAC27;
 }
 
 .modal-content {
-  background: #ec4e4e;
+  background: #070808;
 }
 
 /* jQuery ui classes needed for the modal */

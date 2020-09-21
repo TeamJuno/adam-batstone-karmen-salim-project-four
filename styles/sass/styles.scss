@@ -306,25 +306,52 @@ footer {
   }
 }
 
-
 /* Dynamic Modal */
 
-.recipe-container-image,
+.ui-dialog-titlebar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.ui-button {
+  @include primary-font(calc(1rem + 1vw), 1.6, calc(0.05rem + 0.05vw));
+  color: $primary-text-color;
+  background-color: $secondary-warning-color;
+  border: 1px solid $warning-color;
+  padding: 10px 20px;
+  width: 40%;
+    &:hover,
+    &:focus {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+}
+
+.recipe-container-media,
 .recipe-container-ingredients,
 .recipe-container-instructions {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 25px 0;
 }
 
+.recipe-img-container {
+  width: 70%;
+}
+
+.recipe-container-instructions p {
+  width: 80%;
+}
 
 .outer-modal {
-  background: rgb(23, 182, 31);
+  background: $primary-color;
 }
 
 .modal-content {
-  background: rgb(236, 78, 78);
+  background: $primary-background-color;
 }
 
 
