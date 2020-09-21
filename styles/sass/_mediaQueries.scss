@@ -13,11 +13,10 @@
   .header-nav {
     display: none;
     position: absolute;
-    width: 100%;
+    width: 90%;
 
     ul {
       display: block!important;
-      max-width: 90%;
       text-align: right;
     }
 
@@ -34,7 +33,7 @@
     display: block!important;
   }
 
-  
+
   /* Main */
   .main-container {
     flex-direction: column;
