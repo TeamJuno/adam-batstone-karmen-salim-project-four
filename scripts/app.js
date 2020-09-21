@@ -124,12 +124,10 @@ cocktailApp.onSubmit = function () {
 
 // Function for displaying drinks on the DOM
 cocktailApp.displayDrinks = (recipes) => {
-  // console.log('displayDrinks recipes: ', recipes)
   // Creating the UL element
   const $drinksList = $('<ul>')
 
   // Creating an li element for each recipe element in the array
-  // TODO Possibly refactor !!!
   $.each(recipes, (index, recipe) => {
     // Appending each li to the ul
     $drinksList.append(`<li>
@@ -142,13 +140,12 @@ cocktailApp.displayDrinks = (recipes) => {
 
   $('.recipe-container').append($drinksList)
 
-  cocktailApp.configureClickBehaviourOnRecipies(recipes)
+  cocktailApp.configureClickBehaviourOnRecipes(recipes)
 }
 
 
-cocktailApp.configureClickBehaviourOnRecipies = (recipes) => {
-
-  // Getting the users click on recipie
+cocktailApp.configureClickBehaviourOnRecipes = (recipes) => {
+  // Getting the users click on recipe
   $('li').on('click', (e) => {
 
     // Variable for storing the click
@@ -157,22 +154,28 @@ cocktailApp.configureClickBehaviourOnRecipies = (recipes) => {
     // Checking if the click is on the h3 or the img
     if ($(e.target).is('h3')) {
       $drinkTitle = $(e.target).text()
-      $('.modal').dialog('open');
+      $('.modal').dialog('open')
+      cocktailApp.getRecipeBySelection($drinkTitle, recipes)
     } else if ($(e.target).is('img')) {
       $drinkTitle = $(e.target).prev().text()
-      $('.modal').dialog('open');
+      $('.modal').dialog('open')
+      cocktailApp.getRecipeBySelection($drinkTitle, recipes)
     }
-
-    // Finding the index number of selected drink
-    const selection = recipes.findIndex((drink) => {
-      return $drinkTitle === drink.strDrink
-    })
-
-    // Using the original recipe array to find the index of the selected drink
-    const $drinkSelected = recipes[selection].strDrink
-    cocktailApp.getRecipe($drinkSelected)
   })
 }
+
+
+// Configure the recipe selection to use once the user clicks on a recipe
+cocktailApp.getRecipeBySelection = (drinkTitle, recipes) => {
+  // Find the index number of selected drink
+  const selection = recipes.findIndex((drink) => {
+    return drinkTitle === drink.strDrink
+  })
+
+  const $drinkSelected = recipes[selection].strDrink
+  cocktailApp.getRecipe($drinkSelected)
+}
+
 
 cocktailApp.getRecipe = (drink) => {
   return $.ajax({
@@ -215,6 +218,7 @@ cocktailApp.getRecipe = (drink) => {
     })
 }
 
+
 // Function for displaying recipe on the DOM
 cocktailApp.displayRecipes = (recipe) => {
   // clear the modal content
@@ -231,7 +235,7 @@ cocktailApp.displayRecipes = (recipe) => {
 
   console.log($ingredientsList)
   const $recipeContainerImage = $(`
-    <div class="recipe-container-image">
+    <div class="recipe-container-media">
     <h3 class="recipe-name">${recipe.recipeName}</h3>
     <div class="recipe-img-container"><img src="${recipe.recipeImage}" class="recipe-img"></div>
     </div>`)
