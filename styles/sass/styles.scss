@@ -300,14 +300,7 @@ footer {
   span,
   a {
     font-size: calc(0.7rem + 0.7vw);
-  }
-
-  span {
-    color: $secondary-warning-color;
-  }
-
-  a {
-    color: $primary-text-color;
+    color: $secondary-warning-color!important;
   }
 }
 
