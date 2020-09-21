@@ -228,8 +228,9 @@ button:focus {
 .recipe-container {
   display: flex;
   justify-content: space-evenly;
-  flex-wrap: wrap;
+  flex-wrap: wrap;  
   .drink-title {
+    height: 175px;
     display: flex;
     justify-content: center;
     align-items: center;
