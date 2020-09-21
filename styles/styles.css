@@ -567,8 +567,16 @@ section {
 }
 
 a {
+  display: inline-block;
   padding: 5px;
   text-decoration: none;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+a:hover, a:focus {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 h1 {
@@ -825,9 +833,21 @@ button:focus {
       flex-wrap: wrap;
 }
 
+.recipe-container .drink-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .recipe-container h3 {
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  margin: 2rem;
 }
 
 .recipe-container ul {
@@ -843,7 +863,7 @@ button:focus {
 }
 
 .recipe-container li {
-  background-color: #B56629;
+  background-color: rgba(192, 95, 38, 0.2);
   text-align: center;
   width: 300px;
   display: -webkit-box;
@@ -913,8 +933,15 @@ footer {
 
 .footer-copyright span,
 .footer-copyright a {
-  color: #B56629;
   font-size: calc(0.7rem + 0.7vw);
+}
+
+.footer-copyright span {
+  color: #B56629;
+}
+
+.footer-copyright a {
+  color: #FAFAFA;
 }
 
 /* Recipe Container */

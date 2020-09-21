@@ -22,7 +22,6 @@
 
 // TODO - MODALLLLL fix
 // TODO - check accessibilty on the hamburger menu AND recipe-container
-// TODO - Background color on recipe container, veritcally center the h3 text inside a div
 // TODO - Hover and focus states on links
 // TODO - change style on input when it's invalid
 // TODO - add scroll on navigation links
@@ -132,9 +131,11 @@ cocktailApp.displayDrinks = (recipes) => {
   $.each(recipes, (index, recipe) => {
     // Appending each li to the ul
     $drinksList.append(`<li>
+    <div class="drink-title">
     <h3>${recipe.strDrink}</h3>
-    <img src=${recipe.strDrinkThumb} class="drink-img">
-  </li>`)
+    </div>
+    <img src=${recipe.strDrinkThumb}> 
+    </li>`)
   })
 
   $('.recipe-container').append($drinksList)
