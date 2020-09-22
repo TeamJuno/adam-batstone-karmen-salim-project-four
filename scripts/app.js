@@ -20,16 +20,17 @@
 // TODO - make sure the drinksToDisplay arr only contains one of each drink type
 
 
-// TODO - MODALLLLL fix - done
+// TODO - MODALLLLL fix - DONE
+  // - need to fix the white space at the bottom when the modal is open
 // TODO - check accessibilty on the hamburger menu AND recipe-container
-// TODO - Hover and focus states on links
-// TODO - change style on input when it's invalid
-// TODO - add scroll on navigation links - DONE
-// TO DO - fix the hamburger menu
 // TO DO = all dynamically added images should have alt (recipe container and modal)
-// TO DO = add instructions to the find cocktail section
+// TODO - change style on input when it's invalid
 
-// TODO - add buttons that change how search will function
+// TODO - Hover and focus states on links - DONE
+// TODO - add scroll on navigation links - DONE
+// TO DO - fix the hamburger menu - DONE
+// TO DO = add instructions to the find cocktail section - DONE
+
 
 
 
