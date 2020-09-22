@@ -130,6 +130,8 @@ cocktailApp.displayDrinks = (recipes) => {
 
   // Creating an li element for each recipe element in the array
   $.each(recipes, (index, recipe) => {
+    console.log('recipe.strDrink:', recipe.strDrink)
+
     // Appending each li to the ul
     $drinksList.append(`
       <li class="recipe-card">
@@ -137,7 +139,7 @@ cocktailApp.displayDrinks = (recipes) => {
         <div class="drink-title">
         <h3 class="recipe-card-title">${recipe.strDrink}</h3>
         </div>
-        <img src=${recipe.strDrinkThumb}>
+        <img src="${recipe.strDrinkThumb}" alt="Glass of delicious ${recipe.strDrink} beverage.">
         </button>
       </li>
     `)
@@ -244,7 +246,7 @@ cocktailApp.displayRecipes = (recipe) => {
   const $recipeContainerImage = $(`
     <div class="recipe-container-media">
     <h3 class="recipe-name">${recipe.recipeName}</h3>
-    <div class="recipe-img-container"><img src="${recipe.recipeImage}" class="recipe-img"></div>
+    <div class="recipe-img-container"><img src="${recipe.recipeImage}" class="recipe-img" alt="Glass of delicious ${recipe.strDrink} beverage."></div>
     </div>`)
 
   const $recipeContainerIngredients = $(`<div class="recipe-container-ingredients">
