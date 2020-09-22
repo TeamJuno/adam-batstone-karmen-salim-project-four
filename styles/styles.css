@@ -439,8 +439,7 @@ img {
 ========================== */
 /* MIXINS
 ========================== */
-/* COLORS
-========================== */
+/* COLORS*/
 @media (max-width: 900px) {
   /* Header */
   .header-content {
@@ -554,6 +553,7 @@ img {
 html {
   font-size: 100%;
   height: 100%;
+  background-color: #070808;
 }
 
 body {
