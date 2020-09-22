@@ -4,6 +4,7 @@
 @import 'colors';
 @import 'mediaQueries';
 
+
 /* Global */
 html {
   font-size: 100%;
@@ -31,6 +32,7 @@ nav a {
   padding: 5px;
   text-decoration: none;
   transition: .2s;
+
   &:hover,
   &:focus {
     transform: scale(1.1);
@@ -61,8 +63,8 @@ h4 {
 /* Header*/
 header {
   min-height: 100vh;
-  // background-image: url(../assets/banner.jpg);
-  background-image: linear-gradient(to top rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../assets/banner.jpg);
+  background-image: linear-gradient(to top rgba(0, 0, 0, 0.7),
+   rgba(0, 0, 0, 0.7)), url(../assets/banner.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -139,7 +141,7 @@ header {
 /* Main */
 .main {
   // https://css-tricks.com/couple-takes-sticky-footer/
-  min-height: calc(100vh - 180px); // for sticky footer
+  min-height: calc(100vh - 180px);
   display: flex;
   align-items: center;
   background-color: $secondary-background-color;
@@ -195,9 +197,9 @@ header {
   justify-content: center;
   align-items: center;
 
-    h4 {
-      @include secondary-font(calc(1.3rem + 1.3vw), 2.2, calc(0.25rem + 0.25vw))
-    }
+  h4 {
+    @include secondary-font(calc(1.3rem + 1.3vw), 2.2, calc(0.25rem + 0.25vw))
+  }
 }
 
 .search-buttons {
@@ -223,7 +225,8 @@ header {
 
 /* Form */
 .invalid-input {
-  border: 1px solid red;
+  border: 1px solid $secondary-warning-color;
+  background-color: $secondary-warning-color;
 }
 
 form {
@@ -270,6 +273,7 @@ button:focus {
   opacity: 0.7;
 }
 
+
 /* Dynamically Added Recipe Container */
 .recipe-container {
   display: flex;
@@ -293,6 +297,7 @@ button:focus {
     font-size: 1.5rem;
     margin: 2rem;
     transition: 0.2s;
+
     &:hover,
     &:focus {
     transform: scale(1.1);
@@ -305,7 +310,7 @@ button:focus {
     justify-content: center;
     flex-wrap: wrap;
   }
-  
+
   .recipe-details {
     background-color: $primary-background-color;
     text-align: center;
@@ -364,6 +369,7 @@ footer {
 .juno-footer-link {
   text-decoration: none;
 }
+
 
 /* Dynamic Modal */
 .ui-dialog-titlebar {

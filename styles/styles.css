@@ -846,7 +846,8 @@ header {
 
 /* Form */
 .invalid-input {
-  border: 1px solid red;
+  border: 1px solid #B56629;
+  background-color: #B56629;
 }
 
 form {
