@@ -21,7 +21,7 @@
 
 
 // TODO - MODALLLLL fix - DONE
-  // - need to fix the white space at the bottom when the modal is open
+// - need to fix the white space at the bottom when the modal is open
 // TODO - check accessibilty on the hamburger menu AND recipe-container
 // TO DO = all dynamically added images should have alt (recipe container and modal)
 // TODO - change style on input when it's invalid
@@ -77,9 +77,9 @@ cocktailApp.getRecipes = function (ingredient) {
 
       // sort the recipes to display in alphabetical order
       drinksToDisplay.sort((a, b) => {
-				// solution for sorting in all browsers https://stackoverflow.com/questions/1969145/sorting-javascript-array-with-chrome
-				return a.strDrink < b.strDrink ? -1 : 1
-			})
+        // solution for sorting in all browsers https://stackoverflow.com/questions/1969145/sorting-javascript-array-with-chrome
+        return a.strDrink < b.strDrink ? -1 : 1
+      })
       // Need access to recipesToDisplay
       cocktailApp.displayDrinks(drinksToDisplay)
 
@@ -242,11 +242,11 @@ cocktailApp.displayRecipes = (recipe) => {
     $ingredientsList.append(`<li>${ingredient}: ${recipe.ingredientsUnits[index]}</li>`)
   })
 
-  console.log($ingredientsList)
+  console.log("recipe", recipe)
   const $recipeContainerImage = $(`
     <div class="recipe-container-media">
     <h3 class="recipe-name">${recipe.recipeName}</h3>
-    <div class="recipe-img-container"><img src="${recipe.recipeImage}" class="recipe-img" alt="Glass of delicious ${recipe.strDrink} beverage."></div>
+    <div class="recipe-img-container"><img src="${recipe.recipeImage}" class="recipe-img" alt="Glass of delicious ${recipe.recipeName} beverage."></div>
     </div>`)
 
   const $recipeContainerIngredients = $(`<div class="recipe-container-ingredients">
