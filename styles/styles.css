@@ -833,7 +833,6 @@ header {
   letter-spacing: calc(0.05rem + 0.05vw);
   font-weight: 400;
   color: #FAFAFA;
-  background-color: #EFAC27;
   border: 1px solid #CEA533;
   text-align: center;
   padding: 5px 10px;
@@ -844,10 +843,17 @@ header {
   margin-left: 15px;
 }
 
+.search-mode-one {
+  background-color: #EFAC27;
+}
+
+.search-mode-two {
+  background-color: #EFAC27;
+}
+
 /* Form */
 .invalid-input {
-  border: 1px solid #B56629;
-  background-color: #B56629;
+  border: 1px solid red;
 }
 
 form {
@@ -960,6 +966,7 @@ button:focus {
 
 .recipe-container .recipe-details {
   background-color: #070808;
+  border-radius: 5%;
   text-align: center;
   width: 300px;
   display: -webkit-box;

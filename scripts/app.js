@@ -138,6 +138,8 @@ cocktailApp.getRecipe = (drink) => {
 // Function to implement the different search options
 cocktailApp.searchOptions = () => {
   $('.ingredient-search').on('click', (e) => {
+    $('.search-mode-two').css('background-color', '#B56629')
+    $('.search-mode-one').css('background-color', '#EFAC27')
     $('input')
       .attr('placeholder', "Enter an ingredient")
       .toggleClass('ingredient-search')
@@ -145,8 +147,10 @@ cocktailApp.searchOptions = () => {
   })
 
   $('.name-search').on('click', () => {
+    $('.search-mode-one').css('background-color', '#B56629')
+    $('.search-mode-two').css('background-color', '#EFAC27')
     $('input')
-      .attr('placeholder', "Enter a cocktail")
+      .attr('placeholder', "Enter a Cocktail")
       .toggleClass('name-search')
       .removeClass('ingredient-search')
   })
