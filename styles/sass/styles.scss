@@ -107,6 +107,7 @@ header {
 /* Mobile Navigation */
 .mobile-nav {
   display: none;
+  cursor: pointer;
 
   i {
     color: $primary-color;
@@ -206,7 +207,8 @@ input {
 }
 
 input:focus,
-button:focus {
+button:focus,
+.mobile-nav a:focus {
   outline: 0.1px dotted $primary-color;
 }
 
@@ -233,14 +235,16 @@ button:focus {
   opacity: 0.7;
 }
 
-
 /* Dynamically Added Recipe Container */
 .recipe-container {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 100px 0;
-
+  img {
+    width: 90%;
+    margin-bottom: 30px;
+  }
 
   .drink-title {
     height: 175px;
@@ -252,6 +256,11 @@ button:focus {
   h3 {
     font-size: 1.5rem;
     margin: 2rem;
+    transition: 0.2s;
+    &:hover,
+    &:focus {
+    transform: scale(1.1);
+    }
   }
 
   ul {
@@ -260,9 +269,9 @@ button:focus {
     justify-content: center;
     flex-wrap: wrap;
   }
-
-  li {
-    background-color: $accent-background-color;
+  
+  .recipe-details {
+    background-color: $primary-background-color;
     text-align: center;
     width: 300px;
     display: flex;
@@ -270,6 +279,7 @@ button:focus {
     justify-content: flex-end;
     align-items: center;
     margin: 2rem;
+    border: none;
   }
 }
 

@@ -19,12 +19,10 @@
 // TODO - FIX centering of modal window on resize
 // TODO - make sure the drinksToDisplay arr only contains one of each drink type
 
-
 // TODO - MODALLLLL fix - DONE
 // - need to fix the white space at the bottom when the modal is open
 // TODO - check accessibilty on the hamburger menu AND recipe-container
-// TO DO = all dynamically added images should have alt (recipe container and modal)
-// TODO - change style on input when it's invalid
+// TO DO = all dynamically added images should have alt (recipe container and modal) - DONE
 
 // TODO - Hover and focus states on links - DONE
 // TODO - add scroll on navigation links - DONE
