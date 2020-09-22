@@ -624,7 +624,6 @@ h4 {
   color: #EFAC27;
 }
 
-/* ========================== */
 /* Header*/
 header {
   min-height: 100vh;
@@ -776,6 +775,10 @@ header {
 
 .main-content {
   margin-bottom: 20px;
+}
+
+.main-content p {
+  text-align: center;
 }
 
 .main-content .main-content-steps {

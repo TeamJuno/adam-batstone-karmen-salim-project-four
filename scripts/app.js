@@ -1,37 +1,3 @@
-// Pseudo Code
-//   - User enters search term- DONE
-//     - save user input into variable - DONE
-//       - use the variable as the query value - DONE
-//         - return all results that match the user input - DONE
-//           - (displayItems()) use forEach loop on the results object to create an < li > for each and append to the < ul > on the DOM.Each < li > will be linked by the 'idDrink' from the results object. - DONE
-// - Within each < li > a title and picture will display for the drink.The user can click on the title to access the recipe, which will result in another API call using the 'idDrink'.This will be displayed in a < div > next to the drink image. - DONE
-// - Append / Prepend the recipe details to the ul - DONE
-//   - If the user clicks on other recipes from the ul, clear the recipe details above and replace them with the new recipe details.
-
-
-// // MVP Goals
-// - Allow user to search recipes based on ingredient and display the matching recipes to the user
-
-//   // Stretch Goals
-//   - Once the recipe is displayed, the user can click an icon to save the recipe as a favorite.This will be added to an array that will be pushed to(localStorage).When the user refreshes the page, we will check localStorage for any saved data, parse it, and update the array with the saved drinks.
-// - The saved recipes are then accessed by the nav link.
-
-// TODO - FIX centering of modal window on resize
-// TODO - make sure the drinksToDisplay arr only contains one of each drink type
-
-// TODO - MODALLLLL fix - DONE
-// - need to fix the white space at the bottom when the modal is open
-// TODO - check accessibilty on the hamburger menu AND recipe-container
-// TO DO = all dynamically added images should have alt (recipe container and modal) - DONE
-
-// TODO - Hover and focus states on links - DONE
-// TODO - add scroll on navigation links - DONE
-// TO DO - fix the hamburger menu - DONE
-// TO DO = add instructions to the find cocktail section - DONE
-
-
-
-
 // App Object
 const cocktailApp = {}
 
@@ -52,7 +18,6 @@ cocktailApp.getRecipes = function (ingredient) {
 
         // Get random recipes from the results object
         const randomIndex = Math.floor(Math.random() * res.drinks.length)
-        // console.log('res.drinks: ', res.drinks)
 
         // breaks out of the for loop if the response is less than 30
         // otherwise the loop will keep going and add undefined to drinksToDisplay
@@ -63,15 +28,12 @@ cocktailApp.getRecipes = function (ingredient) {
         // remove the item and then push it
         // this ensure that there will be no repeat recipes in the display function
         const removedItems = res.drinks.splice(randomIndex, 1)
-        // console.log('removedItems:', removedItems)
 
         const itemToAdd = removedItems[0]
-        // console.log('itemToAdd:', itemToAdd)
 
         drinksToDisplay.push(itemToAdd)
       }
 
-      console.log('drinksToDisplay:', drinksToDisplay)
 
       // sort the recipes to display in alphabetical order
       drinksToDisplay.sort((a, b) => {
@@ -80,18 +42,13 @@ cocktailApp.getRecipes = function (ingredient) {
       })
       // Need access to recipesToDisplay
       cocktailApp.displayDrinks(drinksToDisplay)
-
     })
     .fail(() => {
       $('.recipe-container').html('<p class="error-text">No results found. Please enter different ingredient.</p>')
       $('input').trigger('focus').addClass('invalid-input')
     })
-}
 
-/* Configure Submit Behaviour
-  - get the user input
-  - call the getRecipes()
-*/
+}
 
 cocktailApp.searchOptions = () => {
   $('.ingredient-search').on('click', (e) => {
@@ -116,7 +73,6 @@ cocktailApp.onSubmit = function () {
     // Clearing the recipe-container div
     $('.recipe-container').html('')
     // Setting the placeholder on the search form
-
 
     // Store user input in a variable
     const $userInput = $('input').val().trim()
@@ -148,7 +104,6 @@ cocktailApp.displayDrinks = (recipes) => {
 
   // Creating an li element for each recipe element in the array
   $.each(recipes, (index, recipe) => {
-    console.log('recipe.strDrink:', recipe.strDrink)
 
     // Appending each li to the ul
     $drinksList.append(`
@@ -172,11 +127,8 @@ cocktailApp.displayDrinks = (recipes) => {
 cocktailApp.configureClickBehaviourOnRecipes = function (recipes) {
   // Getting the users click on recipe
   $('.recipe-card').on('click', '.recipe-card-title', function (e) {
-    console.log('e.target', e.target)
-    console.log('this:', this)
 
     const $drinkTitle = $(this).text()
-    console.log('drinkTitle:', $drinkTitle)
 
     $('.modal').dialog('open')
     cocktailApp.getRecipeBySelection($drinkTitle, recipes)
@@ -192,10 +144,7 @@ cocktailApp.getDrinks = (searchTerm) => {
   })
     .then((res) => {
 
-      console.log(res)
-
       const drinkResults = []
-      console.log(drinkResults)
 
       // pick random 20 recipes to push back to recipesToDisplay
       for (let i = 0; i <= 30; i++) {
@@ -209,13 +158,10 @@ cocktailApp.getDrinks = (searchTerm) => {
 
         const removedItems = res.drinks.splice(randomIndex, 1)
 
-
         const itemToAdd = removedItems[0]
-
 
         drinkResults.push(itemToAdd)
       }
-
 
       drinkResults.sort((a, b) => {
         return (a.strDink < b.strDrink) ? -1 : (a.strDrink > b.strDrink) ? 1 : 0
@@ -233,21 +179,15 @@ cocktailApp.getDrinks = (searchTerm) => {
 // Configure the recipe selection to use once the user clicks on a recipe
 cocktailApp.getRecipeBySelection = (drinkTitle, recipes) => {
 
-
-  console.log('drinkTittle:', drinkTitle)
   // Find the index number of selected drink
   const selection = recipes.findIndex((drink) => {
-    console.log('drinkTitle', drinkTitle, 'drink.strDrink:', drink.strDrink)
 
     return drinkTitle === drink.strDrink
   })
-  console.log('selection', selection)
-  console.log('recipe[selection]', recipes[selection])
 
   const $drinkSelected = recipes[selection].strDrink
   cocktailApp.getRecipe($drinkSelected)
 }
-
 
 cocktailApp.getRecipe = (drink) => {
   return $.ajax({
@@ -268,8 +208,6 @@ cocktailApp.getRecipe = (drink) => {
         recipeImage: cocktailRecipeObj.strDrinkThumb,
       }
 
-      console.log(cocktailRecipeArr)
-
       // Getting the ingredients and  measurement units for the recipe and storing them in arrays
       for (const property in cocktailRecipeObj) {
         if (property.includes('strIngredient') && cocktailRecipeObj[property] !== null && cocktailRecipeObj[property] !== "") {
@@ -285,11 +223,7 @@ cocktailApp.getRecipe = (drink) => {
       cocktailApp.displayRecipes(recipeInfoObj)
 
     })
-    .fail((err) => {
-      console.log(err)
-    })
 }
-
 
 // Function for displaying recipe on the DOM
 cocktailApp.displayRecipes = (recipe) => {
@@ -305,7 +239,6 @@ cocktailApp.displayRecipes = (recipe) => {
     $ingredientsList.append(`<li>${ingredient}: ${recipe.ingredientsUnits[index]}</li>`)
   })
 
-  console.log("recipe", recipe)
   const $recipeContainerImage = $(`
     <div class="recipe-container-media">
     <h3 class="recipe-name">${recipe.recipeName}</h3>
@@ -328,7 +261,6 @@ cocktailApp.displayRecipes = (recipe) => {
   $recipeContainer.append($recipeContainerImage, $recipeContainerIngredients, $recipeContainerInstructions)
 
   $('.modal').append($recipeContainer)
-
 
 }
 
