@@ -788,6 +788,59 @@ header {
   width: 50%;
 }
 
+/* Search Buttons */
+.search-buttons-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-buttons-heading h4 {
+  font-family: 'Ovo', 'Times', 'Arial', serif;
+  font-size: calc(1.3rem + 1.3vw);
+  letter-spacing: calc(0.25rem + 0.25vw);
+  line-height: 2.2;
+  font-weight: 400;
+}
+
+.search-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 75px;
+}
+
+.search-buttons button {
+  font-family: 'Raleway', 'Times', 'Arial', sans-serif;
+  font-size: calc(.7rem + .7vw);
+  line-height: 1.6;
+  letter-spacing: calc(0.05rem + 0.05vw);
+  font-weight: 400;
+  color: #FAFAFA;
+  background-color: #EFAC27;
+  border: 1px solid #CEA533;
+  text-align: center;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.search-buttons button:last-child {
+  margin-left: 15px;
+}
+
 /* Form */
 .invalid-input {
   border: 1px solid red;

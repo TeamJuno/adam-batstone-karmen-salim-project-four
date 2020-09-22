@@ -92,6 +92,23 @@ cocktailApp.getRecipes = function (ingredient) {
   - get the user input
   - call the getRecipes()
 */
+
+cocktailApp.searchOptions = () => {
+  $('.ingredient-search').on('click', (e) => {
+    $('input')
+      .attr('placeholder', "Enter an ingredient")
+      .toggleClass('ingredient-search')
+      .removeClass('name-search')
+  })
+
+  $('.name-search').on('click', () => {
+    $('input')
+      .attr('placeholder', "Enter a Cocktail")
+      .toggleClass('name-search')
+      .removeClass('ingredient-search')
+  })
+}
+
 cocktailApp.onSubmit = function () {
   $('form').on('submit', (e) => {
     e.preventDefault()
@@ -99,8 +116,7 @@ cocktailApp.onSubmit = function () {
     // Clearing the recipe-container div
     $('.recipe-container').html('')
     // Setting the placeholder on the search form
-    $('input')
-      .attr('placeholder', "Enter an ingredient")
+
 
     // Store user input in a variable
     const $userInput = $('input').val().trim()
@@ -108,11 +124,15 @@ cocktailApp.onSubmit = function () {
     if ($userInput !== '') {
       $('input').removeClass('invalid-input')
       // Call the API to return recipes to the user
-      cocktailApp.getRecipes($userInput)
-    } else {
-      $('input')
-        .attr('placeholder', "Please enter a valid input")
-        .addClass('invalid-input')
+      if ($('input').hasClass('ingredient-search')) {
+        cocktailApp.getRecipes($userInput)
+      } else if ($('input').hasClass('name-search')) {
+        cocktailApp.getDrinks($userInput)
+      } else {
+        $('input')
+          .attr('placeholder', "Please enter a valid input")
+          .addClass('invalid-input')
+      }
     }
 
     // Clear user input
@@ -164,6 +184,51 @@ cocktailApp.configureClickBehaviourOnRecipes = function (recipes) {
   })
 }
 
+cocktailApp.getDrinks = (searchTerm) => {
+  return $.ajax({
+    url: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`,
+    method: 'GET',
+    dataType: 'JSON',
+  })
+    .then((res) => {
+
+      console.log(res)
+
+      const drinkResults = []
+      console.log(drinkResults)
+
+      // pick random 20 recipes to push back to recipesToDisplay
+      for (let i = 0; i <= 30; i++) {
+
+        // Get random recipes from the results object
+        const randomIndex = Math.floor(Math.random() * res.drinks.length)
+
+        if (res.drinks.length === 0) {
+          break
+        }
+
+        const removedItems = res.drinks.splice(randomIndex, 1)
+
+
+        const itemToAdd = removedItems[0]
+
+
+        drinkResults.push(itemToAdd)
+      }
+
+
+      drinkResults.sort((a, b) => {
+        return (a.strDink < b.strDrink) ? -1 : (a.strDrink > b.strDrink) ? 1 : 0
+      })
+
+      cocktailApp.displayDrinks(drinkResults)
+
+    })
+    .fail(() => {
+      $('.recipe-container').html('<p class="error-text">No results found. Please enter different cocktail.</p>')
+      $('input').trigger('focus').addClass('invalid-input')
+    })
+}
 
 // Configure the recipe selection to use once the user clicks on a recipe
 cocktailApp.getRecipeBySelection = (drinkTitle, recipes) => {
@@ -289,6 +354,7 @@ cocktailApp.displayModal = () => {
 cocktailApp.init = function () {
   cocktailApp.displayModal()
   cocktailApp.onSubmit()
+  cocktailApp.searchOptions()
 }
 
 // Everything that needs to run on page load
