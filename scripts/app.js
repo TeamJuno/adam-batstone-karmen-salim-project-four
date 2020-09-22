@@ -20,7 +20,7 @@
 // TODO - make sure the drinksToDisplay arr only contains one of each drink type
 
 
-// TODO - MODALLLLL fix
+// TODO - MODALLLLL fix - done
 // TODO - check accessibilty on the hamburger menu AND recipe-container
 // TODO - Hover and focus states on links
 // TODO - change style on input when it's invalid
@@ -84,7 +84,7 @@ cocktailApp.getRecipes = function (ingredient) {
 
     })
     .fail(() => {
-      $('.recipe-container').html('<p class="error-text">No Results found</p>')
+      $('.recipe-container').html('<p class="error-text">No results found. Please enter different ingredient.</p>')
       $('input').trigger('focus').addClass('invalid-input')
     })
 }
